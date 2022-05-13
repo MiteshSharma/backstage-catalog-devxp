@@ -4,7 +4,7 @@ metadata:
   name: dba
   description: Database Administrators Team
 spec:
-  type: department
+  type: sub-department
   # Intentional no profile for testing
   parent: devxp
   children: [mysql, postgres]
@@ -16,7 +16,7 @@ metadata:
   name: mysql
   description: The MySQL DBA
 spec:
-  type: department
+  type: team
   # Intentional no profile for testing
   parent: dba
   children: []
@@ -28,7 +28,7 @@ metadata:
   name: postgres
   description: The MySQL DBA
 spec:
-  type: department
+  type: team
   # Intentional no profile for testing
   parent: dba
   children: []

@@ -19,7 +19,7 @@ metadata:
   name: infra
   description: The infra department
 spec:
-  type: department
+  type: team
   profile:
     displayName: Ops Team
     email: ops@devxp.io

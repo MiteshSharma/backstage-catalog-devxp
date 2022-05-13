@@ -18,7 +18,7 @@ metadata:
   name: dev-a
   description: Developers Teams A
 spec:
-  type: department
+  type: team
   profile:
     displayName: Developers Team
     email: dev@devxp.io
