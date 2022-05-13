@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: bob
+  description: Back Office System
+  tags:
+    - backoffice
+    - php
+  annotations:
+    github.com/project-slug: diegoluisi/bob
+spec:
+  type: system
+  owner: group:ops
+  domain: backend
