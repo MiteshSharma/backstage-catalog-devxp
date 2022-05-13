@@ -4,12 +4,12 @@ metadata:
   name: ops
   description: The infra department
 spec:
-  type: department
+  type: sub-department
   profile:
     displayName: Ops Team
     email: ops@devxp.io
     picture: https://avatars.dicebear.com/api/identicon/backstage@example.com.svg?background=%23fff&margin=25
-  parent: devxp
+  parent: engineering
   children: [infra]
 
 ---
