@@ -53,17 +53,17 @@ spec:
           description: Checking this will also create a Amazon Simple Storage Service.
           type: boolean
           default: false       
-        database:
+        rds:
           title: Create RDS
           description: Checking this will also create a Amazon Relational Database Service.
           type: boolean
           default: false    
-        database:
+        sqs:
           title: Create SQS
           description: Checking this will also create a Amazon Simple Queue Service.
           type: boolean
           default: false 
-        database:
+        sns:
           title: Create SNS
           description: Checking this will also create a Amazon Simple Notification Service.
           type: boolean
