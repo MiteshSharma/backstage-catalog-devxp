@@ -45,14 +45,29 @@ spec:
             allowedHosts:
               - github.com
     - title: Create Infrastructure
-      required:
-        - repoUrl
+      # required:
+      #   - repoUrl
       properties:
+        s3:
+          title: Create S3
+          description: Checking this will also create a Amazon Simple Storage Service.
+          type: boolean
+          default: false       
         database:
           title: Create RDS
-          description: Checking this will also create a Database as a service.
+          description: Checking this will also create a Amazon Relational Database Service.
           type: boolean
-          default: true          
+          default: false    
+        database:
+          title: Create SQS
+          description: Checking this will also create a Amazon Simple Queue Service.
+          type: boolean
+          default: false 
+        database:
+          title: Create SNS
+          description: Checking this will also create a Amazon Simple Notification Service.
+          type: boolean
+          default: false                     
   steps:
     - id: template
       name: Fetch Skeleton + Template
