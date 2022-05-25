@@ -8,8 +8,8 @@ metadata:
     - go
     - recommended
 spec:
-  owner: dev@devxp.io
-  type: system
+  owner: group:dev
+  type: service
   parameters:
     - title: Provide some simple information
       required:
