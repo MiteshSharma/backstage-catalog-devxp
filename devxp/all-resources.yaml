@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
-  name: example-resources
+  name: all-resources
   description: A collection of all Backstage example resources
 spec:
   targets:
-    - ./resources/*.yaml
+    - ./resources/*/*.yaml
