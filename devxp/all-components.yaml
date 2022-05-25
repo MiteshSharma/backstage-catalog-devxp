@@ -5,4 +5,4 @@ metadata:
   description: A collection of all Backstage example components
 spec:
   targets:
-    - ./components/*.yaml
+    - ./components/*/*.yaml
