@@ -49,11 +49,16 @@ spec:
       # required:
       #   - repoUrl
       properties:
+        argocd:
+          title: Create ArgoCD App
+          description: Checking this will also create a ArgoCD App.
+          type: boolean
+          default: false      
         S3:
           title: Create S3
           description: Checking this will also create a Amazon Simple Storage Service.
           type: boolean
-          default: false       
+          default: false
         RDS:
           title: Create RDS
           description: Checking this will also create a Amazon Relational Database Service.
