@@ -93,6 +93,17 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
 
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        repoUrl: github.com?repo=argocd&owner=diegoluisi
+        branchName: teste
+        title: backstage
+        description: Teste
+        sourcePath: Dockerfile
+        targetPath: apps/
+
     - id: register
       name: Register
       action: catalog:register
