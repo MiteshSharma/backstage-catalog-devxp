@@ -2,7 +2,11 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: backstage
-  description: Hello World example for gRPC
+  description: Backstage IDP Portal
+  annotations:
+    github.com/project-slug: diegoluisi/backstage
+    backstage.io/techdocs-ref: value    
+    backstage.io/kubernetes-namespace: backstage  
 spec:
   type: openapi
   lifecycle: production
@@ -18,7 +22,7 @@ spec:
       license:
         name: MIT
     servers:
-      - url: http://artist.spotify.net/v1
+      - url: https://backstage.diegoluisi.eti.br/
     paths:
       /artists:
         get:
