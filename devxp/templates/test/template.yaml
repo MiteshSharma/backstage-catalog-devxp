@@ -108,9 +108,11 @@ spec:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: 'create-${{parameters.name}}'
         title: backstage
-        description: 'Create new project: ${{parameters.name}}'
-        sourcePath: argo/
-        targetPath: apps/
+        description: |
+          # New project: ${{parameters.name}}
+          ${{ parameters.description if parameters.description }}
+        #sourcePath: argo/
+        targetPath: ${{ parameters.targetPath if parameters.targetPath else parameters.name }}
 
     - id: register
       name: Register
