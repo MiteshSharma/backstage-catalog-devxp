@@ -71,28 +71,28 @@ spec:
           default: false                     
   steps:
 
-    - id: template
-      name: Fetch Skeleton + Template
-      action: fetch:template
-      input:
-        url: https://github.com/diegoluisi/template-golang
-        #copyWithoutRender:
-        #  - .github/workflows/*
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
+    # - id: template
+    #   name: Fetch Skeleton + Template
+    #   action: fetch:template
+    #   input:
+    #     url: https://github.com/diegoluisi/template-golang
+    #     #copyWithoutRender:
+    #     #  - .github/workflows/*
+    #     values:
+    #       component_id: ${{ parameters.component_id }}
+    #       description: ${{ parameters.description }}
+    #       destination: ${{ parameters.repoUrl | parseRepoUrl }}
+    #       owner: ${{ parameters.owner }}
 
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts:
-          - github.com
-        description: This is ${{ parameters.component_id }}
-        repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: main
+    # - id: publish
+    #   name: Publish
+    #   action: publish:github
+    #   input:
+    #     allowedHosts:
+    #       - github.com
+    #     description: This is ${{ parameters.component_id }}
+    #     repoUrl: ${{ parameters.repoUrl }}
+    #     defaultBranch: main
 
     - id: fetch-app
       name: Fetch ArgoCD App
@@ -106,13 +106,13 @@ spec:
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: 'create-${{parameters.name}}'
-        title: backstage
+        branchName: 'create-${{ parameters.component_id }}'
+        title: ':robot: Create new project ${{ parameters.component_id }}'
         description: |
-          # New project: ${{parameters.name}}
+          # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
         #sourcePath: argo/
-        targetPath: ${{ parameters.targetPath if parameters.targetPath else parameters.name }}
+        targetPath: ${{ parameters.targetPath if parameters.targetPath else parameters.component_id }}
 
     - id: register
       name: Register
