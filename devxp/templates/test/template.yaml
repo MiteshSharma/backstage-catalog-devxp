@@ -54,28 +54,8 @@ spec:
           description: Checking this will also create a ArgoCD App.
           type: boolean
           default: false      
-        S3:
-          title: Create S3
-          description: Checking this will also create a Amazon Simple Storage Service.
-          type: boolean
-          default: false
-        RDS:
-          title: Create RDS
-          description: Checking this will also create a Amazon Relational Database Service.
-          type: boolean
-          default: false    
-        SQS:
-          title: Create SQS
-          description: Checking this will also create a Amazon Simple Queue Service.
-          type: boolean
-          default: false 
-        SNS:
-          title: Create SNS
-          description: Checking this will also create a Amazon Simple Notification Service.
-          type: boolean
-          default: false                     
-  steps:
 
+  steps:
     - id: template
       name: Fetch Skeleton + Template
       action: fetch:template
@@ -99,29 +79,31 @@ spec:
     #     repoUrl: ${{ parameters.repoUrl }}
     #     defaultBranch: main
 
-    - id: fetch-app
+    - id: fetch-argocd-app
       name: Fetch ArgoCD App
       action: fetch:template
       input:
         targetPath: ./argocd
         url: https://github.com/diegoluisi/argo/tree/main/apps/templates
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
-    - id: publish-pr
-      name: Publish PR
+    - id: argocd-pr
+      name: Open ArgoCD PR
       action: publish:github:pull-request
-      if: '$.parameters.argocd'
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: 'create-${{ parameters.component_id }}'
+        branchName: create-${{ parameters.component_id }}
         title: ':robot: Create new project ${{ parameters.component_id }}'
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
         sourcePath: argocd
         targetPath: app
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}        
+       
 
     # - id: register
     #   name: Register
