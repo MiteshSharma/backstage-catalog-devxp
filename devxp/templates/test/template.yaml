@@ -36,6 +36,7 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+
     - title: Choose a location
       required:
         - repoUrl
@@ -54,24 +55,24 @@ spec:
           default: false
 
     - title: Infrastructure
-      properties:
-        argocd:
-          title: Create ArgoCD App
-          description: Checking this will also create a ArgoCD App.
-          type: boolean
-          default: false      
+      properties:      
         resources:
           title: arguments to run the rails new command
           type: object
           properties:
+            argocd:
+              title: Create ArgoCD App
+              description: Checking this will also create a ArgoCD App
+              type: boolean
+              default: false          
             s3:
               title: Create S3 Bucket
-              description: Preconfigure a minimal rails app
+              description: Checking this will also create a S3 Bucket
               type: boolean
               default: false
             rds:
               title: Create RDS
-              description: Preconfigure a minimal rails app
+              description: Checking this will also create a S3 Bucket
               type: boolean
               default: false
 
