@@ -94,10 +94,11 @@ spec:
     - id: argocd-pr
       name: Open ArgoCD PR
       action: publish:github:pull-request
+      if: ${{ parameters.argocd == true }}
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: create-${{ parameters.component_id }}
-        title: ':robot: Create new project ${{ parameters.component_id }}'
+        title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
@@ -114,8 +115,10 @@ spec:
 
   output:
     links:
-      - title: Repository
+      - title: Go to Repository
         url: ${{ steps.publish.output.remoteUrl }}
+      - text: Go to Pull Request
+        url: ${{steps.argocd-pr.output.remoteUrl}}
       - title: Open in catalog
         icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
+        entityRef: ${{ steps.register.output.entityRef }}        
