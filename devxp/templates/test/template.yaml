@@ -71,28 +71,28 @@ spec:
           default: false                     
   steps:
 
-  #   - id: template
-  #     name: Fetch Skeleton + Template
-  #     action: fetch:template
-  #     input:
-  #       url: https://github.com/diegoluisi/template-golang
-  #       #copyWithoutRender:
-  #       #  - .github/workflows/*
-  #       values:
-  #         component_id: ${{ parameters.component_id }}
-  #         description: ${{ parameters.description }}
-  #         destination: ${{ parameters.repoUrl | parseRepoUrl }}
-  #         owner: ${{ parameters.owner }}
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: https://github.com/diegoluisi/template-golang
+        #copyWithoutRender:
+        #  - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
-  #   - id: publish
-  #     name: Publish
-  #     action: publish:github
-  #     input:
-  #       allowedHosts:
-  #         - github.com
-  #       description: This is ${{ parameters.component_id }}
-  #       repoUrl: ${{ parameters.repoUrl }}
-  #       defaultBranch: main
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
 
     - id: fetch-app
       name: Fetch ArgoCD App
