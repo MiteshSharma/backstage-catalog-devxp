@@ -1,0 +1,25 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: backstage
+  description: Hello World example for gRPC
+spec:
+  type: openapi
+  lifecycle: production
+  system: backstage
+  owner: dev
+  providesApis:
+    - backstage.diegoluisi.eti.br
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Artist API
+      license:
+        name: MIT
+    servers:
+      - url: http://artist.spotify.net/v1
+    paths:
+      /artists:
+        get:
+          summary: List all artists
