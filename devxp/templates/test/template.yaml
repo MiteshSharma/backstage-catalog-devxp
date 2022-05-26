@@ -49,22 +49,22 @@ spec:
       # required:
       #   - repoUrl
       properties:
-        s3:
+        S3:
           title: Create S3
           description: Checking this will also create a Amazon Simple Storage Service.
           type: boolean
           default: false       
-        rds:
+        RDS:
           title: Create RDS
           description: Checking this will also create a Amazon Relational Database Service.
           type: boolean
           default: false    
-        sqs:
+        SQS:
           title: Create SQS
           description: Checking this will also create a Amazon Simple Queue Service.
           type: boolean
           default: false 
-        sns:
+        SNS:
           title: Create SNS
           description: Checking this will also create a Amazon Simple Notification Service.
           type: boolean
@@ -93,15 +93,15 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
 
-    - id: publish
-      name: Publish
+    - id: publish-pr
+      name: Publish PR
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=argocd&owner=diegoluisi
+        repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: teste
         title: backstage
-        description: Teste
-        sourcePath: Dockerfile
+        description: Teste PR
+        sourcePath: kustomize/
         targetPath: apps/
 
     - id: register
