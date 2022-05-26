@@ -9,7 +9,7 @@ metadata:
     - infrastructure
     - recommended
 spec:
-  owner: group:sre
+  owner: group:engineering
   type: service
 
   parameters:
@@ -57,7 +57,7 @@ spec:
     - title: Infrastructure
       properties:      
         resources:
-          title: arguments to run the rails new command
+          title: Create Infrastructure Resources
           type: object
           properties:
             argocd:
@@ -135,6 +135,12 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
+
+    - name: Results
+      if: ${{ parameters.dryRun }}
+      action: debug:log
+      input:
+        listWorkspace: true
 
   output:
     links:
