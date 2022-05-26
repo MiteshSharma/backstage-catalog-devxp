@@ -70,7 +70,7 @@ spec:
           type: boolean
           default: false                     
   steps:
-  
+
   #   - id: template
   #     name: Fetch Skeleton + Template
   #     action: fetch:template
@@ -98,7 +98,7 @@ spec:
       name: Fetch ArgoCD App
       action: fetch:template
       input:
-        targetPath: ./argo
+        #targetPath: ./argo
         url: https://github.com/diegoluisi/argo/tree/main/apps/templates
 
     - id: publish-pr
@@ -109,7 +109,7 @@ spec:
         branchName: 'create-{{parameters.name}}'
         title: backstage
         description: 'Create new project: {{parameters.name}}'
-        sourcePath: argo/
+        #sourcePath: argo/
         targetPath: apps/
 
     - id: register
