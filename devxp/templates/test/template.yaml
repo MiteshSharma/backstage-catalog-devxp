@@ -103,7 +103,7 @@ spec:
       name: Fetch ArgoCD App
       action: fetch:template
       input:
-        #targetPath: ./argo
+        targetPath: ./argocd
         url: https://github.com/diegoluisi/argo/tree/main/apps/templates
 
     - id: publish-pr
@@ -117,7 +117,7 @@ spec:
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
-        #sourcePath: argo/
+        sourcePath: argocd
         targetPath: app
         values:
           component_id: ${{ parameters.component_id }}
