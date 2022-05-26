@@ -9,7 +9,6 @@ metadata:
     - data
   annotations:
     github.com/project-slug: diegoluisi/template-golang
-    backstage.io/techdocs-ref: true
   links:
     - url: https://bob.devxp.com/user
       title: Examples Users
