@@ -93,15 +93,22 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
 
+    - id: fetch-app
+      name: Fetch ArgoCD Application
+      action: fetch:plain
+      input:
+        targetPath: ./argo
+        url: https://github.com/diegoluisi/argo/tree/main/apps/templates
+
     - id: publish-pr
       name: Publish PR
       action: publish:github:pull-request
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: teste
+        branchName: 'create-{{parameters.name}}'
         title: backstage
-        description: Teste PR
-        sourcePath: kustomize/
+        description: 'Create new project: {{parameters.name}}'
+        sourcePath: ./argo/
         targetPath: apps/
 
     - id: register
