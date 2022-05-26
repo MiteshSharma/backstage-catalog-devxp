@@ -105,7 +105,7 @@ spec:
       name: Publish PR
       action: publish:github:pull-request
       input:
-        repoUrl: {{ parameters.repoUrl }} #github.com?repo=argo&owner=diegoluisi
+        repoUrl: '{{ parameters.repoUrl }}'  #github.com?repo=argo&owner=diegoluisi
         branchName: 'create-{{parameters.name}}'
         title: backstage
         description: 'Create new project: {{parameters.name}}'
