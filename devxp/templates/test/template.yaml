@@ -112,7 +112,7 @@ spec:
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
         #sourcePath: argo/
-        targetPath: app/
+        targetPath: app
 
     - id: register
       name: Register
