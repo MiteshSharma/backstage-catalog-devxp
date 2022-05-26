@@ -38,3 +38,5 @@ spec:
   system: backstage
   #dependsOn: ['component:bob-cache', 'component:bob-db', 'component:bob-queue']
   apiConsumedBy: ['system:alice']
+  providesApis:
+    - backstage.diegoluisi.eti.br
