@@ -76,28 +76,28 @@ spec:
           default: false                     
   steps:
 
-    # - id: template
-    #   name: Fetch Skeleton + Template
-    #   action: fetch:template
-    #   input:
-    #     url: https://github.com/diegoluisi/template-golang
-    #     #copyWithoutRender:
-    #     #  - .github/workflows/*
-    #     values:
-    #       component_id: ${{ parameters.component_id }}
-    #       description: ${{ parameters.description }}
-    #       destination: ${{ parameters.repoUrl | parseRepoUrl }}
-    #       owner: ${{ parameters.owner }}
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: https://github.com/diegoluisi/template-golang
+        #copyWithoutRender:
+        #  - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
-    # - id: publish
-    #   name: Publish
-    #   action: publish:github
-    #   input:
-    #     allowedHosts:
-    #       - github.com
-    #     description: This is ${{ parameters.component_id }}
-    #     repoUrl: ${{ parameters.repoUrl }}
-    #     defaultBranch: main
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts:
+          - github.com
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
 
     - id: fetch-app
       name: Fetch ArgoCD App
@@ -109,6 +109,7 @@ spec:
     - id: publish-pr
       name: Publish PR
       action: publish:github:pull-request
+      if: '$.parameters.monitoring'
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: 'create-${{ parameters.component_id }}'
@@ -118,13 +119,16 @@ spec:
           ${{ parameters.description if parameters.description }}
         #sourcePath: argo/
         targetPath: app
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}        
 
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+    #     catalogInfoPath: "/catalog-info.yaml"
 
   output:
     links:
