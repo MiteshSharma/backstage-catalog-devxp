@@ -109,7 +109,7 @@ spec:
     - id: publish-pr
       name: Publish PR
       action: publish:github:pull-request
-      if: '$.parameters.monitoring'
+      if: '$.parameters.argocd'
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: 'create-${{ parameters.component_id }}'
