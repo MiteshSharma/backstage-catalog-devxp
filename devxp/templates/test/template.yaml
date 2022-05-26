@@ -98,7 +98,7 @@ spec:
       name: Fetch ArgoCD App
       action: fetch:template
       input:
-        targetPath: ./argo
+        #targetPath: ./argo
         url: https://github.com/diegoluisi/argo/tree/main/apps/templates
 
     - id: publish-pr
