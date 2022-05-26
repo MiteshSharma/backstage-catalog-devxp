@@ -98,18 +98,18 @@ spec:
       name: Fetch ArgoCD App
       action: fetch:template
       input:
-        #targetPath: ./argo
+        targetPath: ./argo
         url: https://github.com/diegoluisi/argo/tree/main/apps/templates
 
     - id: publish-pr
       name: Publish PR
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
+        repoUrl: {{ parameters.repoUrl }} #github.com?repo=argo&owner=diegoluisi
         branchName: 'create-{{parameters.name}}'
         title: backstage
         description: 'Create new project: {{parameters.name}}'
-        #sourcePath: argo/
+        sourcePath: argo/
         targetPath: apps/
 
     - id: register
