@@ -8,6 +8,8 @@ spec:
   lifecycle: production
   system: alice
   owner: dev
+  providesApis:
+    - alice.diegoluisi.eti.br/v1 
   definition: |
     openapi: "3.0.0"
     info:
