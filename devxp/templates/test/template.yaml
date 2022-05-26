@@ -55,26 +55,26 @@ spec:
           default: false
 
     - title: Infrastructure
-      properties:      
-        resources:
-          title: Create Infrastructure Resources
-          type: object
-          properties:
-            argocd:
-              title: Create ArgoCD App
-              description: Checking this will also create a ArgoCD App
-              type: boolean
-              default: false          
-            s3:
-              title: Create S3 Bucket
-              description: Checking this will also create a S3 Bucket
-              type: boolean
-              default: false
-            rds:
-              title: Create RDS
-              description: Checking this will also create a S3 Bucket
-              type: boolean
-              default: false
+      properties:     
+        argocd:
+          title: Create ArgoCD App
+          description: Checking this will also create a ArgoCD App
+          type: boolean
+          default: false         
+        # resources:
+        #   title: Create Infrastructure Resources
+        #   type: object
+          # properties:        
+          #   S3:
+          #     title: Create S3 Bucket
+          #     description: Checking this will also create a S3 Bucket
+          #     type: boolean
+          #     default: false
+          #   RDS:
+          #     title: Create RDS
+          #     description: Checking this will also create a S3 Bucket
+          #     type: boolean
+          #     default: false
 
   steps:
     - id: template
