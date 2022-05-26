@@ -34,7 +34,7 @@ metadata:
       icon: alert
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: production
   owner: group:ops
   system: bob
-  apiConsumedBy: ['component:bob']
+  apiConsumedBy: ['component:bob', 'component:bob-web']
