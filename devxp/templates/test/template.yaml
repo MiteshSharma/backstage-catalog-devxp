@@ -136,7 +136,7 @@ spec:
       if: ${{ parameters.kube == true }}
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: create-${{ parameters.component_id }}
+        branchName: create-kube-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create Kube App ${{ parameters.component_id }}'
         description: |
           # New project: ${{ parameters.component_id }}
