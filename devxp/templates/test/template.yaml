@@ -1,11 +1,11 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: create-test-app-template
-  title: Test Template
-  description: Create a new Test Application
+  name: template-golang-with-infra
+  title: Template Golang + Infra
+  description: Create a new Golang App and Infrastructure
   tags:
-    - test
+    - golang
     - infrastructure
     - recommended
 spec:
