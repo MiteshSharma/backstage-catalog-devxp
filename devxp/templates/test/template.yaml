@@ -61,11 +61,6 @@ spec:
           description: Checking this will also create a ArgoCD App
           type: boolean
           default: false
-        kube:
-          title: Create Kubernetes Deployment
-          description: Checking this will also create a Kubernetes Deployment
-          type: boolean
-          default: false
         rds:
           title: Create RDS
           description: Checking this will also create a RDS
@@ -110,7 +105,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: argocd-pr
-      name: 'Open Pull Request for App ${{ parameters.component_id }}'
+      name: Open PR for ArgoCD
       action: publish:github:pull-request
       if: ${{ parameters.argocd == true }}
       input:
@@ -136,7 +131,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: crossplane-rds-pr
-      name: Open PR for Crossplane RDS ${{ parameters.component_id }}
+      name: Open PR for Crossplane
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
