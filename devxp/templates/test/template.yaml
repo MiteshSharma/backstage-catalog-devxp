@@ -60,21 +60,12 @@ spec:
           title: Create ArgoCD App
           description: Checking this will also create a ArgoCD App
           type: boolean
-          default: false         
-        # resources:
-        #   title: Create Infrastructure Resources
-        #   type: object
-          # properties:        
-          #   S3:
-          #     title: Create S3 Bucket
-          #     description: Checking this will also create a S3 Bucket
-          #     type: boolean
-          #     default: false
-          #   RDS:
-          #     title: Create RDS
-          #     description: Checking this will also create a S3 Bucket
-          #     type: boolean
-          #     default: false
+          default: false
+        kube:
+          title: Create Kubernetes Deployment
+          description: Checking this will also create a Kubernetes Deployment
+          type: boolean
+          default: false
 
   steps:
     - id: template
@@ -106,7 +97,7 @@ spec:
       action: fetch:template
       input:
         targetPath: ./argocd
-        url: https://github.com/diegoluisi/argo/tree/main/apps/templates
+        url: https://github.com/diegoluisi/backstage-templates/tree/main/argo-cd/app
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
@@ -114,7 +105,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: argocd-pr
-      name: Open ArgoCD PR
+      name: Open ArgoCD App PR
       action: publish:github:pull-request
       if: ${{ parameters.argocd == true }}
       input:
@@ -126,7 +117,32 @@ spec:
           ${{ parameters.description if parameters.description }}
         sourcePath: argocd
         targetPath: app
-       
+
+    - id: fetch-kube
+      name: Fetch Kubernetes Files
+      action: fetch:template
+      input:
+        targetPath: ./kube
+        url: https://github.com/diegoluisi/backstage-templates/tree/main/kubernetes
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+
+    - id: argo-kube-pr
+      name: Open ArgoCD Kube PR
+      action: publish:github:pull-request
+      if: ${{ parameters.kube == true }}
+      input:
+        repoUrl: github.com?repo=argo&owner=diegoluisi
+        branchName: create-${{ parameters.component_id }}
+        title: ':robot: [backstage-bot] Create Kube App ${{ parameters.component_id }}'
+        description: |
+          # New project: ${{ parameters.component_id }}
+          ${{ parameters.description if parameters.description }}
+        sourcePath: kube
+        targetPath: app       
 
     - id: register
       name: Register
