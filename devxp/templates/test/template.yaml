@@ -104,8 +104,8 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
-    - id: argocd-pr
-      name: Open ArgoCD App PR
+    - id: app-pr
+      name: Open Pull Request for App ${{ parameters.component_id }}
       action: publish:github:pull-request
       if: ${{ parameters.argocd == true }}
       input:
@@ -130,14 +130,14 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
-    - id: argo-kube-pr
-      name: Open ArgoCD Kube PR
+    - id: kube-pr
+      name: Open Pull Request for Kubernetes ${{ parameters.component_id }}
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: create-kube-${{ parameters.component_id }}
-        title: ':robot: [backstage-bot] Create Kube App ${{ parameters.component_id }}'
+        title: ':robot: [backstage-bot] Create Kubernetes ${{ parameters.component_id }}'
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
