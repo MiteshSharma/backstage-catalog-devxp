@@ -97,7 +97,7 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
 
-    - id: fetch-argocd-app
+    - id: fetch-argocd
       name: Fetch ArgoCD App Template
       action: fetch:template
       input:
@@ -109,8 +109,8 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
-    - id: app-pr
-      name: Open Pull Request for App ${{ parameters.component_id }}
+    - id: argocd-pr
+      name: 'Open Pull Request for App ${{ parameters.component_id }}'
       action: publish:github:pull-request
       if: ${{ parameters.argocd == true }}
       input:
@@ -123,38 +123,12 @@ spec:
         sourcePath: argocd
         targetPath: app
 
-    - id: fetch-kube
-      name: Fetch Kubernetes Templates
-      action: fetch:template
-      input:
-        targetPath: ./kube
-        url: https://github.com/diegoluisi/backstage-templates/tree/main/kubernetes
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
-
-    - id: kube-pr
-      name: Open Pull Request for Kubernetes ${{ parameters.component_id }}
-      action: publish:github:pull-request
-      if: ${{ parameters.kube == true }}
-      input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: create-kube-${{ parameters.component_id }}
-        title: ':robot: [backstage-bot] Create Kubernetes ${{ parameters.component_id }}'
-        description: |
-          # New project: ${{ parameters.component_id }}
-          ${{ parameters.description if parameters.description }}
-        sourcePath: rds
-        targetPath: app
-
     - id: fetch-crossplane-rds
       name: Fetch Crossplane RDS Template
       action: fetch:template
       input:
         targetPath: ./rds
-        url: https://github.com/diegoluisi/backstage-templates/tree/main/kubernetes
+        url: https://github.com/diegoluisi/backstage-templates/tree/main/crossplane/rds
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
