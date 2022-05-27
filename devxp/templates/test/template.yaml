@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: template-golang-with-infra
-  title: Template Golang + Infra
-  description: Create a new Golang App and Infrastructure
+  title: GoLang + Infra
+  description: Create a new GoLang App and Infrastructure
   tags:
     - golang
     - infrastructure
@@ -56,8 +56,8 @@ spec:
 
     - title: Infrastructure
       properties:     
-        argocd:
-          title: Create ArgoCD App
+        kube:
+          title: Create Kubernetes App
           description: Checking this will also create a ArgoCD App
           type: boolean
           default: false
@@ -92,11 +92,11 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
 
-    - id: fetch-argocd
-      name: Fetch ArgoCD App Template
+    - id: fetch-kube
+      name: Fetch Kubernetes Templates
       action: fetch:template
       input:
-        targetPath: ./argocd
+        targetPath: ./kube
         url: https://github.com/diegoluisi/backstage-templates/tree/main/argo-cd/app
         values:
           component_id: ${{ parameters.component_id }}
@@ -104,10 +104,10 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
-    - id: argocd-pr
-      name: Open PR for ArgoCD
+    - id: kube-pr
+      name: "[GitOps] Open PR for ArgoCD"
       action: publish:github:pull-request
-      if: ${{ parameters.argocd == true }}
+      if: ${{ parameters.kube == true }}
       input:
         repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: create-${{ parameters.component_id }}
@@ -115,7 +115,7 @@ spec:
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
-        sourcePath: argocd
+        sourcePath: kube
         targetPath: app
 
     - id: fetch-crossplane-rds
@@ -133,7 +133,7 @@ spec:
     - id: crossplane-rds-pr
       name: Open PR for Crossplane
       action: publish:github:pull-request
-      if: ${{ parameters.kube == true }}
+      if: ${{ parameters.rds == true }}
       input:
         repoUrl: github.com?repo=crossplane-infra&owner=diegoluisi
         branchName: create-kube-${{ parameters.component_id }}
