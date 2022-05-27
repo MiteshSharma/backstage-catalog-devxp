@@ -152,18 +152,20 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
-    - name: Results
-      if: ${{ parameters.dryRun }}
-      action: debug:log
-      input:
-        listWorkspace: true
+    # - name: Results
+    #   if: ${{ parameters.dryRun }}
+    #   action: debug:log
+    #   input:
+    #     listWorkspace: true
 
   output:
     links:
       - title: Go to Repository
         url: ${{ steps.publish.output.remoteUrl }}
-      - text: Go to Pull Request
-        url: ${{steps.argocd-pr.output.remoteUrl}}
+      - text: Go to App Pull Request
+        url: ${{steps.app-pr.output.remoteUrl}}
+      - text: Go to Kubernetes Pull Request
+        url: ${{steps.kube-pr.output.remoteUrl}}        
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}        
