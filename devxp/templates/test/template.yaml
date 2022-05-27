@@ -166,7 +166,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
+        repoUrl: github.com?repo=crossplane-infra&owner=diegoluisi
         branchName: create-kube-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create Kubernetes ${{ parameters.component_id }}'
         description: |
