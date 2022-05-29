@@ -105,7 +105,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: kube-pr
-      name: "[GitOps] Open PR for ArgoCD"
+      name: "Open Pull Request in Argo Repository"
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
@@ -162,9 +162,7 @@ spec:
     links:
       - title: Go to Repository
         url: ${{ steps.publish.output.remoteUrl }}
-      - text: Go to App Pull Request
-        url: ${{steps.app-pr.output.remoteUrl}}
-      - text: Go to Kubernetes Pull Request
+      - title: Go to GitOps Pull Request
         url: ${{steps.kube-pr.output.remoteUrl}}        
       - title: Open in catalog
         icon: catalog
