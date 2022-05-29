@@ -97,7 +97,7 @@ spec:
       action: fetch:template
       input:
         targetPath: ./kube
-        url: https://github.com/diegoluisi/backstage-templates/tree/main/argo-cd/app
+        url: https://github.com/diegoluisi/backstage-templates/tree/main/argo-cd/apps
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
@@ -116,7 +116,7 @@ spec:
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
         sourcePath: kube
-        targetPath: app
+        targetPath: apps
 
     - id: fetch-crossplane-rds
       name: Fetch Crossplane RDS Template
