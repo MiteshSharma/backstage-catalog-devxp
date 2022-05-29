@@ -72,7 +72,7 @@ spec:
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: https://github.com/diegoluisi/template-golang
+        url: https://github.com/diegoluisi/template-app-go
         #copyWithoutRender:
         #  - .github/workflows/*
         values:
