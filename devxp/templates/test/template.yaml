@@ -71,6 +71,7 @@ spec:
     - id: template
       name: Fetch Skeleton + Template
       action: fetch:template
+      cookiecutterCompat: true
       input:
         url: https://github.com/diegoluisi/template-app-go
         #copyWithoutRender:
@@ -91,6 +92,7 @@ spec:
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
+        repoVisibility: public
 
     - id: fetch-kube
       name: Fetch Kubernetes Templates
