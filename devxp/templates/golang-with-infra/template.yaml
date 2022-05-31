@@ -17,6 +17,7 @@ spec:
       required:
         - component_id
         - owner
+        - env
       properties:
         component_id:
           title: Name
@@ -36,6 +37,15 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+        env:
+          title: Environment
+          description: 'Environment to create resources'
+          type: string
+          enum:
+            - development
+            - staging
+            - production
+
 
     - title: Choose a location
       required:
