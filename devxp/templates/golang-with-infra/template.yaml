@@ -33,6 +33,7 @@ spec:
           title: Environment
           description: 'Environment to create resources'
           type: string
+          default: development
           enum:
             - development
             - staging
