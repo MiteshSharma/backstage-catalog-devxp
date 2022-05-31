@@ -80,7 +80,7 @@ spec:
             line1:
               type: string
               name: Line 1
-        animal:
+        test:
           type: object
           properties:
             animal:
