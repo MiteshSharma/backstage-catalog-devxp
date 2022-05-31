@@ -46,49 +46,15 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        test:
-          type: object
+        database:
+          title: Database
+          description: Choose database type
+          type: boolean
           properties:
-            animal:
+            type:
               enum:
-              - Cat
-              - Fish
-          allOf:
-          - if:
-              properties:
-                animal:
-                  const: Cat
-            then:
-              properties:
-                food:
-                  type: string
-                  enum:
-                  - meat
-                  - grass
-                  - fish
-              required:
-              - food
-          - if:
-              properties:
-                animal:
-                  const: Fish
-            then:
-              properties:
-                food:
-                  type: string
-                  enum:
-                  - insect
-                  - worms
-                water:
-                  type: string
-                  enum:
-                  - lake
-                  - sea
-              required:
-              - food
-              - water
-          - required:
-            - animal              
+              - MySQL
+              - Postgres
 
     - title: Choose a location
       required:
