@@ -49,12 +49,13 @@ spec:
         database:
           title: Database
           description: Choose database type
-          type: boolean
+          type: object
           properties:
             type:
               enum:
               - MySQL
               - Postgres
+      
 
     - title: Choose a location
       required:
