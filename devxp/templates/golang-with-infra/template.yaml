@@ -49,12 +49,24 @@ spec:
         database:
           description: Choose database type
           type: object
+          default: MySQL
           properties:
             type:
               enum:
               - MySQL
               - Postgres
-      
+          allOf:
+          - if:
+              properties:
+                type:
+                  const: MySQL
+            then:
+              properties:
+                version:
+                  type: string
+                  enum:
+                  - Version 9.6
+                  - Version 12.0
 
     - title: Choose a location
       required:
