@@ -47,7 +47,6 @@ spec:
             allowedKinds:
               - Group
         database:
-          title: Database
           description: Choose database type
           type: object
           properties:
