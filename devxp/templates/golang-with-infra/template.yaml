@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: template-golang-with-infra
-  title: Golang + Infra
+  title: Golang with Infra
   description: Create a new GoLang App and Infrastructure
   tags:
     - golang
@@ -46,6 +46,49 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+        test:
+          type: object
+          properties:
+            animal:
+              enum:
+              - Cat
+              - Fish
+          allOf:
+          - if:
+              properties:
+                animal:
+                  const: Cat
+            then:
+              properties:
+                food:
+                  type: string
+                  enum:
+                  - meat
+                  - grass
+                  - fish
+              required:
+              - food
+          - if:
+              properties:
+                animal:
+                  const: Fish
+            then:
+              properties:
+                food:
+                  type: string
+                  enum:
+                  - insect
+                  - worms
+                water:
+                  type: string
+                  enum:
+                  - lake
+                  - sea
+              required:
+              - food
+              - water
+          - required:
+            - animal              
 
     - title: Choose a location
       required:
@@ -76,51 +119,8 @@ spec:
           description: Checking this will also create a RDS
           type: boolean
           default: false
-          properties:
-            test:
-              type: object
-              properties:
-                animal:
-                  enum:
-                  - Cat
-                  - Fish
-              allOf:
-              - if:
-                  properties:
-                    animal:
-                      const: Cat
-                then:
-                  properties:
-                    food:
-                      type: string
-                      enum:
-                      - meat
-                      - grass
-                      - fish
-                  required:
-                  - food
-              - if:
-                  properties:
-                    animal:
-                      const: Fish
-                then:
-                  properties:
-                    food:
-                      type: string
-                      enum:
-                      - insect
-                      - worms
-                    water:
-                      type: string
-                      enum:
-                      - lake
-                      - sea
-                  required:
-                  - food
-                  - water
-              - required:
-                - animal
-              
+
+          
   steps:
     - id: template
       name: Fetch Skeleton + Template
