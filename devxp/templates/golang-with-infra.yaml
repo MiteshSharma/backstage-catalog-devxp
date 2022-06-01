@@ -18,6 +18,7 @@ spec:
     - title: Provide some simple information
       required:
         - component_id
+        - system
         - owner
         - env
       properties:
@@ -31,6 +32,15 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: EntityPicker
+          ui:options:
+            allowedKinds:
+              - System
+            defaultKind: System  
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -95,6 +105,7 @@ spec:
         #  - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
+          system: ${{ parameters.system }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
