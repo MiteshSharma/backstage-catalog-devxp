@@ -11,6 +11,8 @@ metadata:
 spec:
   owner: group:engineering
   type: service
+  dependsOn:
+    - location: all-templates
 
   parameters:
     - title: Provide some simple information
@@ -46,27 +48,6 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-        database:
-          description: Choose database type
-          type: object
-          default: MySQL
-          properties:
-            type:
-              enum:
-              - MySQL
-              - Postgres
-          allOf:
-          - if:
-              properties:
-                type:
-                  const: MySQL
-            then:
-              properties:
-                version:
-                  type: string
-                  enum:
-                  - Version 9.6
-                  - Version 12.0
 
     - title: Choose a location
       required:
@@ -92,11 +73,15 @@ spec:
           description: Checking this will also create a ArgoCD App
           type: boolean
           default: false
-        rds:
-          title: Create RDS
-          description: Checking this will also create a RDS
-          type: boolean
-          default: false
+        database:
+          description: Choose database type
+          type: object
+          default: MySQL
+          properties:
+            type:
+              enum:
+              - MySQL
+              - Postgres          
 
           
   steps:
@@ -131,7 +116,7 @@ spec:
       action: fetch:template
       input:
         targetPath: ./kube
-        url: https://github.com/diegoluisi/backstage-templates/tree/main/argo-cd/apps
+        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
@@ -157,7 +142,7 @@ spec:
       action: fetch:template
       input:
         targetPath: ./rds
-        url: https://github.com/diegoluisi/backstage-templates/tree/main/crossplane/rds
+        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
