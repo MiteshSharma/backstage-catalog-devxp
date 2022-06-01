@@ -21,6 +21,7 @@ spec:
         - system
         - lifecycle
         - owner
+        - type
       properties:
         component_id:
           title: Name
@@ -40,7 +41,7 @@ spec:
           ui:options:
             allowedKinds:
               - System
-            defaultKind: System  
+            defaultKind: System 
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -49,7 +50,16 @@ spec:
           enum:
             - deprecated
             - experimental
-            - production               
+            - production            
+        type:
+          title: Type
+          description: 'Application type'
+          type: string
+          default: service
+          enum:
+            - service
+            - website
+            - library               
         owner:
           title: Owner
           type: string
@@ -62,7 +72,6 @@ spec:
     - title: Choose a location
       required:
         - repoUrl
-        - dryRun
       properties:
         repoUrl:
           title: Repository Location
@@ -71,10 +80,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-        dryRun:
-          title: Only perform a dry run, don't publish anything
-          type: boolean
-          default: false
 
     - title: Infrastructure
       properties:
@@ -101,7 +106,10 @@ spec:
               enum:
               - MySQL
               - Postgres          
-
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
           
   steps:
     - id: template
@@ -119,6 +127,7 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
+          type: ${{ parameters.type }}
 
     - id: publish
       name: Publish Application
@@ -135,6 +144,7 @@ spec:
     - id: fetch-kube
       name: Fetch Kubernetes Templates
       action: fetch:template
+      if: ${{ parameters.kube == true }}
       input:
         targetPath: ./kube
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps
@@ -161,6 +171,7 @@ spec:
     - id: fetch-crossplane-rds
       name: Fetch Infrastructure Template
       action: fetch:template
+      if: ${{ parameters.rds == true }}
       input:
         targetPath: ./rds
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
