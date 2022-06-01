@@ -107,7 +107,6 @@ spec:
               type: boolean
               default: false
             databaseType:
-              title: Database Type
               description: Choose database type
               type: object          
               properties:
