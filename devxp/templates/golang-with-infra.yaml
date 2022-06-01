@@ -96,25 +96,44 @@ spec:
           title: Create Kubernetes App
           description: Checking this will also create a ArgoCD App
           type: boolean
-          default: false
-        database:
-          title: Create Database
-          description: Checking this will also create a Database
-          type: boolean
-          default: false          
-        databaseType:
-          description: Choose database type
+          default: false         
+        databaseArguments:
+          title: Database Parameters
           type: object
-          default: MySQL
           properties:
-            type:
-              enum:
-              - MySQL
-              - Postgres          
-        dryRun:
-          title: Only perform a dry run, don't publish anything
-          type: boolean
-          default: false
+            create:
+              title: Create Database
+              description: Preconfigure a minimal rails app
+              type: boolean
+              default: false
+            databaseType:
+              title: Database Type
+              description: Choose database type
+              type: object          
+              properties:
+                type:
+                  enum:
+                  - MySQL
+                  - Postgres 
+
+        # database:
+        #   title: Create Database
+        #   description: Checking this will also create a Database
+        #   type: boolean
+        #   default: false               
+        # databaseType:
+        #   description: Choose database type
+        #   type: object
+        #   default: MySQL
+        #   properties:
+        #     type:
+        #       enum:
+        #       - MySQL
+        #       - Postgres          
+        # dryRun:
+        #   title: Only perform a dry run, don't publish anything
+        #   type: boolean
+        #   default: false
           
   steps:
     - id: template
