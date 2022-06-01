@@ -19,8 +19,8 @@ spec:
       required:
         - component_id
         - system
+        - lifecycle
         - owner
-        - env
       properties:
         component_id:
           title: Name
