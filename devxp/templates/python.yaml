@@ -6,8 +6,8 @@ metadata:
   description: Create a Python Application
   tags:
     - python
-    - script
     - recommended
+    - service
 spec:
   owner: group:dev
   type: script

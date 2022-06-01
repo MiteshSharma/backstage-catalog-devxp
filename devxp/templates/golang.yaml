@@ -6,10 +6,12 @@ metadata:
   description: Create a new GoLang Application
   tags:
     - go
+    - golang
     - recommended
+    - website
 spec:
   owner: group:dev
-  type: service
+  type: website
   parameters:
     - title: Provide some simple information
       required:

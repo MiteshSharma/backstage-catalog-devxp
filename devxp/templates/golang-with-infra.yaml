@@ -5,12 +5,14 @@ metadata:
   title: Golang with Infra
   description: Create a new GoLang App and Infrastructure
   tags:
+    - go
     - golang
     - infrastructure
     - recommended
+    - website
 spec:
   owner: group:engineering
-  type: service
+  type: website
 
   parameters:
     - title: Provide some simple information
