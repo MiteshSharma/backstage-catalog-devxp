@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: template-golang-with-infra
-  title: Golang with Infra
+  name: create-go-infra-app-template
+  title: Golang Website with Infra
   description: Create a new GoLang App and Infrastructure
   tags:
     - go
@@ -86,7 +86,7 @@ spec:
           
   steps:
     - id: template
-      name: Fetch Skeleton + Template
+      name: Fetch Application Template
       action: fetch:template
       cookiecutterCompat: true
       input:
@@ -100,7 +100,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: publish
-      name: Publish
+      name: Publish Application
       action: publish:github
       if: ${{ parameters.dryRun !== true }}
       input:
@@ -124,7 +124,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: kube-pr
-      name: "Open Pull Request in Argo Repository"
+      name: "Open PR in GitOps Repository"
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
@@ -138,7 +138,7 @@ spec:
         targetPath: apps
 
     - id: fetch-crossplane-rds
-      name: Fetch Crossplane RDS Template
+      name: Fetch Infrastructure Template
       action: fetch:template
       input:
         targetPath: ./rds
@@ -150,7 +150,7 @@ spec:
           owner: ${{ parameters.owner }}
 
     - id: crossplane-rds-pr
-      name: Open PR for Crossplane
+      name: Open PR for IAC Repository
       action: publish:github:pull-request
       if: ${{ parameters.rds == true }}
       input:
@@ -164,7 +164,7 @@ spec:
         targetPath: resources/aws/development/apps
 
     - id: register
-      name: Register
+      name: Register Application in Catalog
       action: catalog:register
       if: ${{ parameters.dryRun !== true }}
       input:

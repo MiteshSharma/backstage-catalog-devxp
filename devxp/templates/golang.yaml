@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: create-go-app-template
-  title: GoLang Template
+  title: Golang Website
   description: Create a new GoLang Application
   tags:
     - go

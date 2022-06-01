@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: create-python-app-template
-  title: Python Template
+  title: Python Service
   description: Create a Python Application
   tags:
     - python
@@ -10,7 +10,7 @@ metadata:
     - service
 spec:
   owner: group:dev
-  type: script
+  type: service
   parameters:
     - title: Provide some simple information
       required:
