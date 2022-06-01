@@ -4,5 +4,6 @@ metadata:
   name: all-resources
   description: A collection of all Backstage example resources
 spec:
+  owner: group:dev
   targets:
-    - ./resources/*/*.yaml
+    - ./resources/*/*.yaml    

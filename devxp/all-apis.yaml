@@ -4,5 +4,6 @@ metadata:
   name: all-apis
   description: A collection of all Backstage example APIs
 spec:
+  owner: group:dev
   targets:
     - ./apis/*/*.yaml
