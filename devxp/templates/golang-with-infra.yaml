@@ -41,15 +41,15 @@ spec:
             allowedKinds:
               - System
             defaultKind: System  
-        env:
-          title: Environment
-          description: 'Environment to create resources'
+        lifecycle:
+          title: Lifecycle
+          description: 'Application lifecycle'
           type: string
-          default: development
+          default: experimental
           enum:
-            - development
-            - staging
-            - production          
+            - deprecated
+            - experimental
+            - production               
         owner:
           title: Owner
           type: string
@@ -77,7 +77,16 @@ spec:
           default: false
 
     - title: Infrastructure
-      properties:     
+      properties:
+        env:
+          title: Environment
+          description: 'Environment to create resources'
+          type: string
+          default: development
+          enum:
+            - development
+            - staging
+            - production           
         kube:
           title: Create Kubernetes App
           description: Checking this will also create a ArgoCD App
@@ -109,6 +118,7 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          lifecycle: ${{ parameters.lifecycle }}
 
     - id: publish
       name: Publish Application
