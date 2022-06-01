@@ -98,6 +98,11 @@ spec:
           type: boolean
           default: false
         database:
+          title: Create Database
+          description: Checking this will also create a Database
+          type: boolean
+          default: false          
+        databaseType:
           description: Choose database type
           type: object
           default: MySQL
@@ -171,7 +176,7 @@ spec:
     - id: fetch-crossplane-rds
       name: Fetch Infrastructure Template
       action: fetch:template
-      if: ${{ parameters.rds == true }}
+      if: ${{ parameters.database == true }}
       input:
         targetPath: ./rds
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
@@ -184,7 +189,7 @@ spec:
     - id: crossplane-rds-pr
       name: Open PR for IAC Repository
       action: publish:github:pull-request
-      if: ${{ parameters.rds == true }}
+      if: ${{ parameters.database == true }}
       input:
         repoUrl: github.com?repo=crossplane-infra&owner=diegoluisi
         branchName: create-kube-${{ parameters.component_id }}
