@@ -11,8 +11,6 @@ metadata:
 spec:
   owner: group:engineering
   type: service
-  dependsOn:
-    - location: all-templates
 
   parameters:
     - title: Provide some simple information
