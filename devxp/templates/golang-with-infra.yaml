@@ -92,11 +92,11 @@ spec:
           title: Environment
           description: 'Environment to create resources'
           type: string
-          default: development
+          default: dev
           enum:
-            - development
-            - staging
-            - production                   
+            - dev
+            - stg
+            - prd
         databaseArguments:
           title: Database Parameters
           type: object
@@ -136,6 +136,7 @@ spec:
           owner: ${{ parameters.owner }}
           lifecycle: ${{ parameters.lifecycle }}
           type: ${{ parameters.type }}
+          env: ${{ parameters.env}}
 
     - id: publish
       name: Publish Application
@@ -148,6 +149,7 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
+        collaborators: ${{ parameters.owner }}
 
     - id: fetch-kube
       name: Fetch Kubernetes Templates
