@@ -149,7 +149,9 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
-        collaborators: ${{ parameters.owner }}
+        collaborators:
+          - username: ${{ parameters.owner }}
+            access: maintain
 
     - id: fetch-kube
       name: Fetch Kubernetes Templates
