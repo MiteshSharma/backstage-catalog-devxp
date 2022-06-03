@@ -8,7 +8,7 @@ spec:
     - ./all-apis.yaml
     - ./all-components.yaml
     - ./all-domais.yaml
-    - ./all-groups.yaml
+    #- ./all-groups.yaml
     - ./all-resources.yaml
     - ./all-systems.yaml
     - ./all-templates.yaml    

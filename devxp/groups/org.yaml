@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: devxp-tech
+  name: devxp-tech-local
   description: DevXP Technology
   links:
     - url: http://www.devxp-tech.io/
