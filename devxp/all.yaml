@@ -4,6 +4,7 @@ metadata:
   name: all
   description: A collection of all Backstage example systems
 spec:
+  owner: group:engineering
   targets:
     - ./all-apis.yaml
     - ./all-components.yaml

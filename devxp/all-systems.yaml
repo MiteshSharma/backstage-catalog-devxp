@@ -4,6 +4,6 @@ metadata:
   name: all-systems
   description: A collection of all Backstage example systems
 spec:
-  owner: group:dev
+  owner: group:engineering
   targets:
     - ./systems/*.yaml

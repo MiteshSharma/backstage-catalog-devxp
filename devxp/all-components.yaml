@@ -4,6 +4,6 @@ metadata:
   name: all-components
   description: A collection of all Backstage example components
 spec:
-  owner: group:dev
+  owner: group:engineering
   targets:
     - ./components/*/*.yaml
