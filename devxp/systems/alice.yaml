@@ -10,5 +10,5 @@ metadata:
     github.com/project-slug: diegoluisi/alice
 spec:
   type: website
-  owner: group:dev
+  owner: group:dev-team
   domain: frontend

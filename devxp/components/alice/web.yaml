@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: group:dev
+  owner: group:dev-team
   system: alice
   dependsOn: ['system:bob']
   apiConsumedBy: ['component:alice']

@@ -10,4 +10,4 @@ metadata:
       title: Domain Metrics Dashboard
       icon: dashboard
 spec:
-  owner: dev
+  owner: group:engineering

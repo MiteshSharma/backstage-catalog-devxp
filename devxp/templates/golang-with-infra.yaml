@@ -11,7 +11,7 @@ metadata:
     - recommended
     - website
 spec:
-  owner: group:engineering
+  owner: group:sre-team
   type: website
 
   parameters:

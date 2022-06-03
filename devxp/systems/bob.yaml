@@ -10,5 +10,5 @@ metadata:
     github.com/project-slug: diegoluisi/bob
 spec:
   type: system
-  owner: group:ops
+  owner: group:dev-team
   domain: backend

@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: group:dev
+  owner: group:dev-team
   system: backstage
   #dependsOn: ['component:bob-cache', 'component:bob-db', 'component:bob-queue']
   apiConsumedBy: ['system:alice']

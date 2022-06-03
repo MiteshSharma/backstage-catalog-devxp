@@ -7,7 +7,7 @@ spec:
   type: grpc
   lifecycle: deprecated
   system: bob
-  owner: ops
+  owner: group:dev-team
   definition: |
     // Copyright 2015 gRPC authors.
     //

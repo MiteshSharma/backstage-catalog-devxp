@@ -34,6 +34,6 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: group:ops
+  owner: group:sre-team
   system: bob
   apiConsumedBy: ['component:bob', 'component:bob-web']

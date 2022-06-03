@@ -10,7 +10,7 @@ metadata:
     - recommended
     - website
 spec:
-  owner: group:dev
+  owner: group:sre-team
   type: website
   parameters:
     - title: Provide some simple information
