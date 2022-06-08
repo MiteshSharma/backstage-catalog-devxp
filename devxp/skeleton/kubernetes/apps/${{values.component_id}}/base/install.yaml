@@ -4,6 +4,7 @@ kind: Namespace
 metadata:
   labels:
     kubernetes.io/metadata.name: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
   name: ${{values.component_id}}
 spec:
   finalizers:
@@ -17,6 +18,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: ${{values.component_id}}.diegoluisi.eti.br
   labels:
     app: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
   name: ${{values.component_id}}
   namespace: ${{values.component_id}}
 spec:
@@ -33,6 +35,7 @@ kind: Deployment
 metadata:
   labels:
     app: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
   name: ${{values.component_id}}
   namespace: ${{values.component_id}}
 spec:
