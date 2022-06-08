@@ -76,8 +76,6 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: ${{values.component_id}}
-  labels: 
-    backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   maxReplicas: 3
   metrics:
