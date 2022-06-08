@@ -47,6 +47,7 @@ spec:
     metadata:
       labels:
         app: ${{values.component_id}}
+        backstage.io/kubernetes-id: ${{values.component_id}}
     spec:
       containers:
       - image: diegoluisi/${{values.component_id}}:3c12d96f
@@ -75,6 +76,8 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: ${{values.component_id}}
+  labels: 
+    backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   maxReplicas: 3
   metrics:
@@ -96,6 +99,8 @@ kind: VirtualService
 metadata:
   name: ${{values.component_id}}
   namespace: ${{values.component_id}}
+  labels:
+    backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   gateways:
   - istio-system/istio-gateway
