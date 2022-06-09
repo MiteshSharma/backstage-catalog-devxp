@@ -29,15 +29,14 @@ spec:
             allowedKinds:
               - System
             defaultKind: System 
-        component:
+        componet:
           title: Component
           type: string
-          description: Component for the resource
-          ui:field: EntityPicker
+          description: Component to create resource
+          ui:field: ComponentPicker
           ui:options:
             allowedKinds:
-              - Component
-            defaultKind: Component
+              - Component            
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
