@@ -99,7 +99,7 @@ spec:
       input:
         repoUrl: github.com?repo=crossplane-resources&owner=diegoluisi
         branchName: create-db-${{ parameters.system }}
-        title: ':robot: [backstage-bot] Create new App ${{ parameters.system }}'
+        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.component }}-${{ parameters.env }}-db'
         description: |
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
@@ -116,8 +116,6 @@ spec:
 
   output:
     links:
-      - title: Go to Repository
-        url: ${{ steps.publish.output.remoteUrl }}
       - title: Go to GitOps Pull Request
         url: ${{ steps.kube-pr.output.remoteUrl }}        
       - title: Open in catalog
