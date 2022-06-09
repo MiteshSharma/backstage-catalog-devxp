@@ -81,9 +81,8 @@ spec:
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
         values:
           system: ${{ parameters.system }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
-          env: ${{ parameters.owner }}
+          env: ${{ parameters.env }}
 
     - id: crossplane-rds-pr
       name: Open PR for IAC Repository
