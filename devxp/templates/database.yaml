@@ -19,7 +19,6 @@ spec:
         - system
         - lifecycle
         - owner
-        - type
       properties:
         system:
           title: System
