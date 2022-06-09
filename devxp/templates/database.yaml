@@ -78,7 +78,7 @@ spec:
           title: Only perform a dry run, don't publish anything
           type: boolean
           default: false
-
+  steps:
     - id: fetch-template
       name: Fetch RDS Templates
       action: fetch:template
