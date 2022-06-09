@@ -81,7 +81,7 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: ${{values.component_id}}
 spec:
-  maxReplicas: 3
+  maxReplicas: 2
   metrics:
   - resource:
       name: cpu
