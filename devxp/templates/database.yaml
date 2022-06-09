@@ -33,7 +33,7 @@ spec:
           title: Component
           type: string
           description: Component to create resource
-          ui:field: ComponentPicker
+          # ui:field: ComponentPicker
           ui:options:
             allowedKinds:
               - Component            
