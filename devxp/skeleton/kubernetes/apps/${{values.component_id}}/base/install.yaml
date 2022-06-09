@@ -54,19 +54,28 @@ spec:
         imagePullPolicy: IfNotPresent
         name: ${{values.component_id}}
         ports:
-        - containerPort: 8080
+        - name: app-port
+          containerPort: 8080
           protocol: TCP
         livenessProbe:
           httpGet:
             path: /health-check/liveness
-            port: 8080
+            port: app-port
+          failureThreshold: 2
+          periodSeconds: 10  
+        startupProbe:
+          httpGet:
+            path: /health-check/readines
+            port: app-port
+          failureThreshold: 30
+          periodSeconds: 10  
         resources:
           limits:
             cpu: 100m
-            memory: 256Mi
+            memory: 128Mi
           requests:
             cpu: 50m
-            memory: 128Mi
+            memory: 64Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
