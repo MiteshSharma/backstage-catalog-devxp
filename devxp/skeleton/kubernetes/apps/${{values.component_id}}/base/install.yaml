@@ -56,6 +56,10 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
+        livenessProbe:
+          httpGet:
+          path: /health-check/liveness
+          port: 8080
         resources:
           limits:
             cpu: 100m
