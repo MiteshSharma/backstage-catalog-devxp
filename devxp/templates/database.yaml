@@ -29,7 +29,7 @@ spec:
             allowedKinds:
               - System
             defaultKind: System 
-        componet:
+        component:
           title: Component
           type: string
           description: Component to create resource
