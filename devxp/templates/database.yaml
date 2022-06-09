@@ -73,7 +73,6 @@ spec:
                   enum:
                   - MySQL
                   - Postgres 
-                default: Postgres
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
