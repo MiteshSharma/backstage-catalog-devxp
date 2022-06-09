@@ -95,7 +95,7 @@ spec:
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: resources/aws/apps/${{ parameters.system }}/${{ parameters.env }}        
+        targetPath: resources/aws/apps/
 
     # - id: register
     #   name: Register Application in Catalog
