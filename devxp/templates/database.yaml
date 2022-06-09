@@ -50,8 +50,7 @@ spec:
     - title: Infrastructure
       properties:     
       required:
-        - env
-        - database      
+        - env   
         env:
           title: Environment
           description: 'Environment to create resources'
