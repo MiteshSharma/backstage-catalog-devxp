@@ -49,8 +49,8 @@ spec:
 
     - title: Infrastructure
       properties:     
-      required:
-        - env   
+        required:
+          - env   
         env:
           title: Environment
           description: 'Environment to create resources'
