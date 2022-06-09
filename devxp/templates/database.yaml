@@ -38,6 +38,14 @@ spec:
             allowedKinds:
               - Component            
             defaultKind: Component  
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group            
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -47,14 +55,7 @@ spec:
             - deprecated
             - experimental
             - production                         
-        owner:
-          title: Owner
-          type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
+
 
     - title: Infrastructure
       properties:      
@@ -70,6 +71,7 @@ spec:
         database:
           title: Database Parameters
           type: object
+          default: Postgres
           properties:         
             type:
               enum:
