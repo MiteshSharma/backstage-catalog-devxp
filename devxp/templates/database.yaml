@@ -48,12 +48,7 @@ spec:
               - Group
 
     - title: Infrastructure
-      properties:
-        kube:
-          title: Create Kubernetes App
-          description: Checking this will also create a ArgoCD App
-          type: boolean
-          default: false       
+      properties:     
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -67,11 +62,6 @@ spec:
           title: Database Parameters
           type: object
           properties:
-            create:
-              title: Create Database
-              description: Preconfigure a minimal rails app
-              type: boolean
-              default: false
             databaseType:
               description: Choose database type
               type: object          
@@ -80,112 +70,47 @@ spec:
                   enum:
                   - MySQL
                   - Postgres 
+                default: Postgres
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
           default: false
           
   steps:
-    - id: template
-      name: Fetch Application Template
-      action: fetch:template
-      cookiecutterCompat: true
-      input:
-        url: https://github.com/diegoluisi/template-app-go
-        #copyWithoutRender:
-        #  - .github/workflows/*
-        values:
-          component_id: ${{ parameters.component_id }}
-          system: ${{ parameters.system }}
-          description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
-          lifecycle: ${{ parameters.lifecycle }}
-          type: ${{ parameters.type }}
-          env: ${{ parameters.env}}
-
-    - id: publish
-      name: Publish Application
-      action: publish:github
-      if: ${{ parameters.dryRun !== true }}
-      input:
-        allowedHosts:
-          - github.com
-        description: This is ${{ parameters.component_id }}
-        repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: main
-        repoVisibility: public
-        collaborators:
-          - username: ${{ parameters.owner }}
-            access: maintain
-
-    - id: fetch-kube
-      name: Fetch Kubernetes Templates
-      action: fetch:template
-      if: ${{ parameters.kube == true }}
-      input:
-        targetPath: ./kube
-        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
-
-    - id: kube-pr
-      name: "Open PR in GitOps Repository"
-      action: publish:github:pull-request
-      if: ${{ parameters.kube == true }}
-      input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: create-${{ parameters.component_id }}
-        title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
-        description: |
-          # New project: ${{ parameters.component_id }}
-          ${{ parameters.description if parameters.description }}
-        sourcePath: kube
-        targetPath: apps
-
     - id: fetch-crossplane-rds
       name: Fetch Infrastructure Template
       action: fetch:template
-      if: ${{ parameters.database == true }}
+      if: ${{ parameters.dryRun == false }}
       input:
         targetPath: ./rds
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
         values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
+          system: ${{ parameters.system }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          env: ${{ parameters.owner }}
 
     - id: crossplane-rds-pr
       name: Open PR for IAC Repository
       action: publish:github:pull-request
-      if: ${{ parameters.database == true }}
+      if: ${{ parameters.dryRun == false }}
       input:
         repoUrl: github.com?repo=crossplane-infra&owner=diegoluisi
-        branchName: create-rds-${{ parameters.component_id }}
-        title: ':robot: [backstage-bot] Create Database for ${{ parameters.component_id }}'
+        branchName: create-rds-${{ parameters.system }}
+        title: ':robot: [backstage-bot] Create Database for ${{ parameters.system }}'
         description: |
           # New project: ${{ parameters.component_id }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: resources/aws/development/apps
+        targetPath: resources/aws/apps/${{ parameters.system }}/${{ parameters.env }}
 
-    - id: register
-      name: Register Application in Catalog
-      action: catalog:register
-      if: ${{ parameters.dryRun !== true }}
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
-
-    # - name: Results
-    #   if: ${{ parameters.dryRun }}
-    #   action: debug:log
+    # - id: register
+    #   name: Register Application in Catalog
+    #   action: catalog:register
+    #   if: ${{ parameters.dryRun !== true }}
     #   input:
-    #     listWorkspace: true
+    #     repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+    #     catalogInfoPath: "/catalog-info.yaml"
 
   output:
     links:
