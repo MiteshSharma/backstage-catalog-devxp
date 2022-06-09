@@ -70,10 +70,9 @@ spec:
           title: Only perform a dry run, don't publish anything
           type: boolean
           default: false
-          
-  steps:
-    - id: fetch-crossplane-rds
-      name: Fetch Infrastructure Template
+
+    - id: fetch-template
+      name: Fetch RDS Templates
       action: fetch:template
       if: ${{ parameters.dryRun == false }}
       input:
@@ -84,19 +83,19 @@ spec:
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
 
-    - id: crossplane-rds-pr
-      name: Open PR for IAC Repository
+    - id: open-pr
+      name: "Open PR in GitOps Repository"
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=crossplane-infra&owner=diegoluisi
-        branchName: create-rds-${{ parameters.system }}
-        title: ':robot: [backstage-bot] Create Database for ${{ parameters.system }}'
+        repoUrl: github.com?repo=crossplane-resources&owner=diegoluisi
+        branchName: create-db-${{ parameters.system }}
+        title: ':robot: [backstage-bot] Create new App ${{ parameters.system }}'
         description: |
-          # New project: ${{ parameters.component_id }}
+          # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: resources/aws/apps/${{ parameters.system }}/${{ parameters.env }}
+        targetPath: resources/aws/apps/${{ parameters.system }}/${{ parameters.env }}        
 
     # - id: register
     #   name: Register Application in Catalog
