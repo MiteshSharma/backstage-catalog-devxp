@@ -54,7 +54,7 @@ spec:
           title: Type
           description: 'Application type'
           type: string
-          default: service
+          default: website
           enum:
             - service
             - website
