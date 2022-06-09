@@ -89,7 +89,7 @@ spec:
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
         values:
           system: ${{ parameters.system }}
-          system: ${{ parameters.component }}
+          component: ${{ parameters.component }}
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
 
