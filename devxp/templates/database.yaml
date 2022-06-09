@@ -16,22 +16,11 @@ spec:
   parameters:
     - title: Provide some simple information
       required:
-        - component_id
         - system
         - lifecycle
         - owner
         - type
       properties:
-        component_id:
-          title: Name
-          type: string
-          description: Unique name of the component
-          ui:field: EntityNamePicker
-          ui:autofocus: true
-        description:
-          title: Description
-          type: string
-          description: Help others understand what this website is for.
         system:
           title: System
           type: string
@@ -49,16 +38,7 @@ spec:
           enum:
             - deprecated
             - experimental
-            - production            
-        type:
-          title: Type
-          description: 'Application type'
-          type: string
-          default: service
-          enum:
-            - service
-            - website
-            - library               
+            - production                         
         owner:
           title: Owner
           type: string
@@ -67,18 +47,6 @@ spec:
           ui:options:
             allowedKinds:
               - Group
-
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
 
     - title: Infrastructure
       properties:
