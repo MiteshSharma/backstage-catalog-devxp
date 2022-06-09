@@ -34,9 +34,9 @@ spec:
           type: string
           description: Component to create resource
           # ui:field: ComponentPicker
-          ui:options:
-            allowedKinds:
-              - Component            
+          # ui:options:
+          #   allowedKinds:
+          #     - Component            
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
