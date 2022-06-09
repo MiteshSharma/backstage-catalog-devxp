@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: database-template
-  title: AWS Database Template
+  title: Database Template
   description: Create a RDSInstance on AWS
   tags:
     - aws
@@ -28,16 +28,16 @@ spec:
           ui:options:
             allowedKinds:
               - System
-            defaultKind: System 
-        component:
-          title: Component
-          type: string
-          description: Component to create resource
-          ui:field: EntityPicker
-          ui:options:
-            allowedKinds:
-              - Component            
-            defaultKind: Component  
+            defaultKind: System
+        # component:
+        #   title: Component
+        #   type: string
+        #   description: Component to create resource
+        #   ui:field: EntityPicker
+        #   ui:options:
+        #     allowedKinds:
+        #       - Component
+        #     defaultKind: Component
         owner:
           title: Owner
           type: string
@@ -45,7 +45,7 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Group            
+              - Group
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -54,11 +54,11 @@ spec:
           enum:
             - deprecated
             - experimental
-            - production                         
+            - production
 
 
     - title: Infrastructure
-      properties:      
+      properties:
         env:
           title: Environment
           description: 'Environment to create resources'
@@ -72,11 +72,11 @@ spec:
           title: Database Parameters
           type: object
           default: Postgres
-          properties:         
+          properties:
             type:
               enum:
               - MySQL
-              - Postgres 
+              - Postgres
         dryRun:
           title: Only perform a dry run, don't publish anything
           type: boolean
@@ -91,7 +91,6 @@ spec:
         url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
         values:
           system: ${{ parameters.system }}
-          component: ${{ parameters.component }}
           owner: ${{ parameters.owner }}
           env: ${{ parameters.env }}
 
@@ -101,8 +100,8 @@ spec:
       if: ${{ parameters.dryRun == false }}
       input:
         repoUrl: github.com?repo=crossplane-resources&owner=diegoluisi
-        branchName: create-${{ parameters.system }}-${{ parameters.component }}-${{ parameters.env }}-db
-        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.component }}-${{ parameters.env }}-db'
+        branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
+        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
         description: |
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
@@ -120,7 +119,7 @@ spec:
   output:
     links:
       - title: Go to GitOps Pull Request
-        url: ${{ steps.open-pr.output.remoteUrl }}        
+        url: ${{ steps.open-pr.output.remoteUrl }}
       - title: Open in catalog
         icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}        
+        entityRef: ${{ steps.register.output.entityRef }}
