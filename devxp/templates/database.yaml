@@ -99,13 +99,13 @@ spec:
       if: ${{ parameters.dryRun == false }}
       input:
         repoUrl: github.com?repo=crossplane-resources&owner=diegoluisi
-        branchName: create-db-${{ parameters.system }}
+        branchName: create-${{ parameters.system }}-${{ parameters.component }}-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.component }}-${{ parameters.env }}-db'
         description: |
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: resources/aws/apps/
+        targetPath: resources/aws/apps
 
     # - id: register
     #   name: Register Application in Catalog
@@ -118,7 +118,7 @@ spec:
   output:
     links:
       - title: Go to GitOps Pull Request
-        url: ${{ steps.kube-pr.output.remoteUrl }}        
+        url: ${{ steps.open-pr.output.remoteUrl }}        
       - title: Open in catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}        
