@@ -33,10 +33,11 @@ spec:
           title: Component
           type: string
           description: Component to create resource
-          ui:field: ComponentPicker
+          ui:field: EntityPicker
           ui:options:
             allowedKinds:
               - Component            
+            defaultKind: Component  
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
