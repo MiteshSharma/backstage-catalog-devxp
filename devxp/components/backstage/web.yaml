@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: backstage-web
   description: Backstage Frontend
-  annotations:
+  # annotations:
     # github.com/project-slug: diegoluisi/backstage
     # backstage.io/techdocs-ref: value
     # backstage.io/kubernetes-namespace: backstage
