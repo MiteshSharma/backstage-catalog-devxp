@@ -108,7 +108,7 @@ spec:
       action: fetch:template
       cookiecutterCompat: true
       input:
-        url: https://github.com/diegoluisi/template-app-go
+        url: https://github.com/devxp-tech/template-app-go
         #copyWithoutRender:
         #  - .github/workflows/*
         values:
