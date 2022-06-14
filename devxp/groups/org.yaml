@@ -3,6 +3,7 @@ kind: Group
 metadata:
   name: devxp-tech
   description: DevXP Technology
+  namespace: devxp-tech
   links:
     - url: http://www.devxp-tech.io/
       title: Website

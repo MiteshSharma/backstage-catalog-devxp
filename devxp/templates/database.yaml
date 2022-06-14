@@ -4,6 +4,7 @@ metadata:
   name: database-template
   title: Database Template
   description: Create a RDSInstance on AWS
+  namespace: devxp-tech
   tags:
     - aws
     - rds

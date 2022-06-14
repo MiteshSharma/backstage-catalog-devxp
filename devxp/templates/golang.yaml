@@ -4,6 +4,7 @@ metadata:
   name: template-golang
   title: Golang Website
   description: Create a new GoLang Website
+  namespace: devxp-tech
   tags:
     - go
     - golang

@@ -3,13 +3,14 @@ kind: System
 metadata:
   name: backstage
   description: Backstage
+  namespace: devxp-tech
   tags:
     - backstage
     - idp
   annotations:
     github.com/project-slug: diegoluisi/backstage
-    backstage.io/techdocs-ref: value    
-    backstage.io/kubernetes-namespace: backstage    
+    backstage.io/techdocs-ref: value
+    backstage.io/kubernetes-namespace: backstage
 spec:
   type: system
   owner: group:sre-team

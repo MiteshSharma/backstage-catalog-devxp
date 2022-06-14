@@ -3,6 +3,7 @@ kind: Domain
 metadata:
   name: idp
   description: Everything related to artists
+  namespace: devxp-tech
   links:
     - url: http://example.com/domain/artists/
       title: Domain Readme

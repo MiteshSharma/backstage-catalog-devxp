@@ -3,6 +3,7 @@ kind: System
 metadata:
   name: bob
   description: Back Office System
+  namespace: devxp-tech
   tags:
     - backoffice
     - php

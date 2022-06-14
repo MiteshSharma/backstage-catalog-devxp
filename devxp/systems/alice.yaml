@@ -3,6 +3,7 @@ kind: System
 metadata:
   name: alice
   description: Frontend
+  namespace: devxp-tech
   tags:
     - frontend
     - php
