@@ -6,6 +6,5 @@ metadata:
   description: A collection of all Backstage Templates
 spec:
   owner: group:engineering
-  type: file
   targets:
     - ./templates/*.yaml
