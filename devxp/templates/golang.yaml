@@ -136,7 +136,7 @@ spec:
           - username: sre-team
             access: maintain
           - username: ${{ parameters.owner }}
-            access: write
+            access: push
 
     - id: fetch-kube
       name: Fetch Kubernetes Templates
