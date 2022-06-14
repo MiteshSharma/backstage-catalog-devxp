@@ -142,7 +142,7 @@ spec:
       if: ${{ parameters.kube == true }}
       input:
         targetPath: ./kube
-        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps
+        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/kubernetes/apps
         values:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
