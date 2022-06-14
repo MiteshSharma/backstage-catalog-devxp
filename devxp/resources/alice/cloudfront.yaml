@@ -5,5 +5,5 @@ metadata:
   description: cloud-front.cdn.com
 spec:
   type: service
-  owner: ops-a
+  owner: group:sre-team
   system: alice

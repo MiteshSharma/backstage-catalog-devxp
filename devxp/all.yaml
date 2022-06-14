@@ -1,9 +1,11 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: all
   description: A collection of all Backstage example systems
 spec:
+  owner: group:engineering
   targets:
     - ./all-apis.yaml
     - ./all-components.yaml
@@ -11,4 +13,4 @@ spec:
     - ./all-groups.yaml
     - ./all-resources.yaml
     - ./all-systems.yaml
-    - ./all-templates.yaml    
+    - ./all-templates.yaml

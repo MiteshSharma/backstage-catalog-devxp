@@ -1,9 +1,11 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: all-components
   description: A collection of all Backstage example components
 spec:
-  owner: group:dev
+  # owner: group:engineering
+  # type: file
   targets:
     - ./components/*/*.yaml

@@ -1,9 +1,10 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: all-apis
   description: A collection of all Backstage example APIs
 spec:
-  owner: group:dev
+  owner: group:engineering
   targets:
     - ./apis/*/*.yaml

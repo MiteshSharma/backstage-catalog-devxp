@@ -3,10 +3,10 @@ kind: Component
 metadata:
   name: backstage-web
   description: Backstage Frontend
-  annotations:
-    github.com/project-slug: diegoluisi/backstage
-    backstage.io/techdocs-ref: value    
-    backstage.io/kubernetes-namespace: backstage
+  # annotations:
+    # github.com/project-slug: diegoluisi/backstage
+    # backstage.io/techdocs-ref: value
+    # backstage.io/kubernetes-namespace: backstage
   tags:
     - web
     - frontend
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner: group:dev
+  owner: group:dev-team
   system: backstage
   #dependsOn: ['component:bob-cache', 'component:bob-db', 'component:bob-queue']
   apiConsumedBy: ['system:alice']

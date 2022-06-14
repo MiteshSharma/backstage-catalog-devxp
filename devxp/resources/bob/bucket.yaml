@@ -5,5 +5,5 @@ metadata:
   description: s3://bob-s3.amazonaws.com
 spec:
   type: service
-  owner: ops-a
+  owner: group:sre-team
   system: bob

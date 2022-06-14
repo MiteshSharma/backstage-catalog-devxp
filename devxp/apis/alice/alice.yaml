@@ -7,7 +7,7 @@ spec:
   type: openapi
   lifecycle: production
   system: alice
-  owner: dev
+  owner: group:dev-team
   providesApis:
     - alice.diegoluisi.eti.br/v1 
   definition: |

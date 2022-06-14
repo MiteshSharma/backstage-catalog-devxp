@@ -12,5 +12,5 @@ metadata:
     backstage.io/kubernetes-namespace: backstage    
 spec:
   type: system
-  owner: group:ops
+  owner: group:sre-team
   domain: idp

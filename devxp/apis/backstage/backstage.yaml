@@ -11,7 +11,7 @@ spec:
   type: openapi
   lifecycle: production
   system: backstage
-  owner: dev
+  owner: group:sre-team
   providesApis:
     - backstage.diegoluisi.eti.br
   definition: |
