@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: bob-web
   description: Backoficce Api
-  namespace: devxp-tech
+
   # annotations:
     # github.com/project-slug: diegoluisi/bob-web
     # backstage.io/techdocs-ref: value

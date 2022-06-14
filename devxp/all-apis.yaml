@@ -4,7 +4,7 @@ kind: Location
 metadata:
   name: all-apis
   description: A collection of all Backstage example APIs
-  namespace: devxp-tech
+
 spec:
   owner: group:engineering
   targets:

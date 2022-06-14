@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: bob-queue
   description: Backoficce Api
-  namespace: devxp-tech
+
   tags:
     - rabbitmq
     - queue

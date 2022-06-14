@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: bob-db
   description: Bob MySQL Dashboard
-  namespace: devxp-tech
+
   tags:
     - database
     - data

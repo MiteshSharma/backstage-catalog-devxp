@@ -4,7 +4,7 @@ kind: Location
 metadata:
   name: all-groups
   description: A collection of all Backstage example Groups
-  namespace: devxp-tech
+
 spec:
   owner: group:engineering
   targets:

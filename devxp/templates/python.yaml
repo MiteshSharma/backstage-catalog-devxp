@@ -4,7 +4,7 @@ metadata:
   name: create-python-app-template
   title: Python Service
   description: Create a Python Application
-  namespace: devxp-tech
+
   tags:
     - python
     - recommended

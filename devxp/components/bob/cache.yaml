@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: bob-cache
   description: Backoficce Api
-  namespace: devxp-tech
+
   tags:
     - memcached
     - cache

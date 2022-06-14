@@ -3,7 +3,7 @@ kind: Resource
 metadata:
   name: cloud-front
   description: cloud-front.cdn.com
-  namespace: devxp-tech
+
 spec:
   type: service
   owner: group:sre-team

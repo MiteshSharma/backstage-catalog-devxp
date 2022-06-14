@@ -3,7 +3,7 @@ kind: System
 metadata:
   name: backstage
   description: Backstage
-  namespace: devxp-tech
+
   tags:
     - backstage
     - idp

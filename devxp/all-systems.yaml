@@ -4,7 +4,7 @@ kind: Location
 metadata:
   name: all-systems
   description: A collection of all Backstage example systems
-  namespace: devxp-tech
+
 spec:
   owner: group:engineering
   targets:

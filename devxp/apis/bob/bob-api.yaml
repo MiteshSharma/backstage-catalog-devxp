@@ -3,7 +3,7 @@ kind: API
 metadata:
   name: bob-api
   description: Hello World example for gRPC
-  namespace: devxp-tech
+
 spec:
   type: grpc
   lifecycle: deprecated

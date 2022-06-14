@@ -3,7 +3,7 @@ kind: API
 metadata:
   name: backstage
   description: Backstage IDP Portal
-  namespace: devxp-tech
+
   annotations:
     github.com/project-slug: diegoluisi/backstage
     backstage.io/techdocs-ref: value

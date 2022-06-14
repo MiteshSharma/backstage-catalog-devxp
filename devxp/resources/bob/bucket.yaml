@@ -3,7 +3,7 @@ kind: Resource
 metadata:
   name: bob-bucket
   description: s3://bob-s3.amazonaws.com
-  namespace: devxp-tech
+
 spec:
   type: service
   owner: group:sre-team

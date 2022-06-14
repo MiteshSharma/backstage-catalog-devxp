@@ -3,7 +3,7 @@ kind: API
 metadata:
   name: alice-api
   description: Hello World example for gRPC
-  namespace: devxp-tech
+
 spec:
   type: openapi
   lifecycle: production

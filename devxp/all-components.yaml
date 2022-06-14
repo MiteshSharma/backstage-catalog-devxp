@@ -4,7 +4,7 @@ kind: Location
 metadata:
   name: all-components
   description: A collection of all Backstage example components
-  namespace: devxp-tech
+
 spec:
   owner: group:engineering
   targets:
