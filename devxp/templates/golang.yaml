@@ -133,8 +133,10 @@ spec:
         defaultBranch: main
         repoVisibility: public
         collaborators:
-          - username: ${{ parameters.owner }}
+          - username: sre-team
             access: maintain
+          - username: ${{ parameters.owner }}
+            access: write
 
     - id: fetch-kube
       name: Fetch Kubernetes Templates
