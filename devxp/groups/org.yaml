@@ -13,7 +13,7 @@ spec:
   profile:
     displayName: DevXP Tech
     email: it@devxp.io
-    picture: https://avatars.dicebear.com/api/identicon/info@example.com.svg?background=%23fff&margin=25
+    # picture: https://avatars.dicebear.com/api/identicon/info@example.com.svg?background=%23fff&margin=25
   children: [group:engineering]
 
 # ---
@@ -25,6 +25,6 @@ spec:
 # spec:
 #   targets:
 #     - ./engineering.yaml
-#     - ./dev.yaml  
+#     - ./dev.yaml
 #     - ./ops.yaml
 #     - ./dba.yaml
