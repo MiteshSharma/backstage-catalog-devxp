@@ -34,7 +34,7 @@ metadata:
       title: Alerts
       icon: alert
 spec:
-  type: service
+  type: website
   lifecycle: production
   owner: group:dev-team
   system: alice
