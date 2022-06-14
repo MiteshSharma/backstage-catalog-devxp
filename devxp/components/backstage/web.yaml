@@ -4,9 +4,9 @@ metadata:
   name: backstage-web
   description: Backstage Frontend
   annotations:
-    github.com/project-slug: diegoluisi/backstage
-    backstage.io/techdocs-ref: value    
-    backstage.io/kubernetes-namespace: backstage
+    # github.com/project-slug: diegoluisi/backstage
+    # backstage.io/techdocs-ref: value
+    # backstage.io/kubernetes-namespace: backstage
   tags:
     - web
     - frontend

@@ -6,8 +6,8 @@ metadata:
   tags:
     - backoffice
     - php
-  annotations:
-    github.com/project-slug: diegoluisi/bob
+  # annotations:
+  #   github.com/project-slug: diegoluisi/bob
 spec:
   type: system
   owner: group:dev-team
