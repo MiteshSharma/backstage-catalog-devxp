@@ -8,7 +8,7 @@ spec:
   owner: group:engineering
   type: file
   targets:
-    - ./all-apis.yaml
+    - ./devxp/all-apis.yaml
     - ./all-components.yaml
     - ./all-domais.yaml
     - ./all-groups.yaml
