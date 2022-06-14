@@ -4,6 +4,7 @@ kind: Location
 metadata:
   name: all-templates
   description: A collection of all Backstage Templates
+  namespace: devxp-tech
 spec:
   owner: group:engineering
   targets:
