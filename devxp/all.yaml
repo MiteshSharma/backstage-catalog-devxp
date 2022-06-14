@@ -1,3 +1,4 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
@@ -12,4 +13,4 @@ spec:
     - ./all-groups.yaml
     - ./all-resources.yaml
     - ./all-systems.yaml
-    - ./all-templates.yaml    
+    - ./all-templates.yaml

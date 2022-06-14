@@ -1,3 +1,4 @@
+---
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
@@ -6,4 +7,4 @@ metadata:
 spec:
   #owner: group:engineering
   targets:
-    - ./resources/*/*.yaml    
+    - ./resources/*/*.yaml
