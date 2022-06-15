@@ -89,7 +89,7 @@ spec:
       if: ${{ parameters.dryRun == false }}
       input:
         targetPath: ./s3
-        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/rds
+        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/s3
         values:
           system: ${{ parameters.system }}
           owner: ${{ parameters.owner }}
@@ -116,6 +116,13 @@ spec:
     #   input:
     #     repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
     #     catalogInfoPath: "/catalog-info.yaml"
+
+
+    - name: Results
+      if: ${{ parameters.dryRun }}
+      action: debug:log
+      input:
+        listWorkspace: true
 
   output:
     links:
