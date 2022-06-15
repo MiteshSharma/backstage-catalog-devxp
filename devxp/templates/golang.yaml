@@ -12,7 +12,7 @@ metadata:
     - website
 spec:
   owner: group:sre-team
-  type: website
+  type: component
 
   parameters:
     - title: Provide some simple information

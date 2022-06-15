@@ -11,7 +11,7 @@ metadata:
     - service
 spec:
   owner: group:sre-team
-  type: service
+  type: component
   parameters:
     - title: Provide some simple information
       required:

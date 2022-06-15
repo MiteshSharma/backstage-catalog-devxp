@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: bucket-template
-  title: bucket Template
+  title: S3 Bucket Template
   description: Create a S3 Bucket on AWS
 
   tags:
@@ -12,7 +12,7 @@ metadata:
     - bucket
 spec:
   owner: group:sre-team
-  type: component
+  type: resource
 
   parameters:
     - title: Provide some simple information
