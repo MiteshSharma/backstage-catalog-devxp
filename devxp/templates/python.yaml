@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: create-python-app-template
+  name: python-template
   title: Python Service
   description: Create a Python Application
 
