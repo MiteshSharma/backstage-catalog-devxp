@@ -3,7 +3,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: all-resources
-  namespace: default
   description: A collection of all Backstage example resources
 
 spec:
