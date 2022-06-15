@@ -3,7 +3,11 @@ kind: Resource
 metadata:
   name: backstage-bucket
   description: Stores Backstage Mkdocs
+  tags:
+    - bucket
+    - s3
 spec:
   type: s3-bucket
   owner: group:sre-team
   system: backstage
+  lifecycle: production
