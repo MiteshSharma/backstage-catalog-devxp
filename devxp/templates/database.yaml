@@ -100,14 +100,14 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=crossplane-resources&owner=diegoluisi
+        repoUrl: github.com?repo=argo&owner=diegoluisi
         branchName: create-${{ parameters.system }}-${{ parameters.env }}-db
         title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-db'
         description: |
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
         sourcePath: rds
-        targetPath: resources/aws/apps
+        targetPath: apps
 
     # - id: register
     #   name: Register Application in Catalog
