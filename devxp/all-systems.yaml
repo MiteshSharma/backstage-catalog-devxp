@@ -4,7 +4,6 @@ kind: Location
 metadata:
   name: all-systems
   description: A collection of all Backstage example systems
-
 spec:
   owner: group:engineering
   targets:

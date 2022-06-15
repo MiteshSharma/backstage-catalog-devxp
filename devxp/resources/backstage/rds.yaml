@@ -2,8 +2,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: backstage-db
-  description: Backstage Postgres database
+  description: Stores Backstage Information
 spec:
-  type: service
+  type: database
   owner: group:dba-team
   system: backstage
