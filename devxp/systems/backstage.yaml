@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: backstage
+  description: Backstage
+  tags:
+    - backstage
+    - idp
+  links:
+    - url: https://backstage.diegoluisi.eti.br
+      title: Backstage
+      icon: dashboard
+  annotations:
+    github.com/project-slug: devxp-tech/backstage
+    backstage.io/kubernetes-namespace: backstage
+spec:
+  type: system
+  owner: group:sre-team
+  domain: idp
