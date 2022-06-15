@@ -9,6 +9,7 @@ metadata:
     - python
     - recommended
     - service
+    - component
 spec:
   owner: group:sre-team
   type: component

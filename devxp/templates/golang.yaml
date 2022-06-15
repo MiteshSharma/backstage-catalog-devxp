@@ -10,6 +10,7 @@ metadata:
     - golang
     - recommended
     - website
+    - component
 spec:
   owner: group:sre-team
   type: component

@@ -10,6 +10,7 @@ metadata:
     - s3
     - infrastructure
     - bucket
+    - resource
 spec:
   owner: group:sre-team
   type: resource

@@ -10,6 +10,7 @@ metadata:
     - rds
     - infrastructure
     - database
+    - resource
 spec:
   owner: group:sre-team
   type: resource
