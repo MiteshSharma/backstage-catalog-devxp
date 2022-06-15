@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: ${{values.system}}
+  description: Backstage
+  tags:
+    - ${{values.system}}
+    - ${{values.domain}}
+  links:
+    - url: https://${{values.system}}.diegoluisi.eti.br
+      title: System
+      icon: dashboard
+  annotations:
+    github.com/project-slug: devxp-tech/${{values.system}}
+    backstage.io/kubernetes-namespace: ${{values.system}}
+spec:
+  type: system
+  owner: group:${{values.owner}}
+  domain: ${{values.domain}}

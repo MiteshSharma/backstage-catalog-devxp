@@ -8,7 +8,7 @@ metadata:
     - system
 spec:
   owner: group:sre-team
-  type: resource
+  type: system
 
   parameters:
     - title: Provide some simple information
