@@ -4,7 +4,6 @@ kind: Location
 metadata:
   name: all-resources
   description: A collection of all Backstage example resources
-
 spec:
   owner: group:engineering
   targets:
