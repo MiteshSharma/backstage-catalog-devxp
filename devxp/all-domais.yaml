@@ -4,7 +4,6 @@ kind: Location
 metadata:
   name: all-domains
   description: A collection of all Backstage example domains
-
 spec:
   # owner: group:engineering
   targets:
