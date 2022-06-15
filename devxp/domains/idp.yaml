@@ -3,7 +3,6 @@ kind: Domain
 metadata:
   name: idp
   description: Everything related to artists
-
   links:
     - url: http://example.com/domain/artists/
       title: Domain Readme
