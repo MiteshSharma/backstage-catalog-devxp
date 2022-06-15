@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: backstage-bucket
+  description: Stores Backstage Mkdocs
+spec:
+  type: s3-bucket
+  owner: group:sre-team
+  system: backstage
