@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    kubernetes.io/metadata.name: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
+  name: ${{values.component_id}}
+spec:
+  finalizers:
+  - kubernetes

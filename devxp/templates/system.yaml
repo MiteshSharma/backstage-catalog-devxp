@@ -54,30 +54,7 @@ spec:
             - production
 
 
-    - title: Infrastructure
-      properties:
-        env:
-          title: Environment
-          description: 'Environment to create resources'
-          type: string
-          default: dev
-          enum:
-            - dev
-            - stg
-            - prd
-        bucket:
-          title: bucket Parameters
-          type: object
-          default: Postgres
-          properties:
-            type:
-              enum:
-              - MySQL
-              - Postgres
-        dryRun:
-          title: Only perform a dry run, don't publish anything
-          type: boolean
-          default: false
+   
   steps:
     - id: fetch-template
       name: Fetch RDS Templates

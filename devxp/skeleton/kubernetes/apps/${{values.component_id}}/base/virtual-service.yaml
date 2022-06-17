@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ${{values.component_id}}
+  namespace: ${{values.component_id}}
+  labels:
+    backstage.io/kubernetes-id: ${{values.component_id}}
+spec:
+  gateways:
+  - istio-system/istio-gateway
+  hosts:
+  - ${{values.component_id}}.diegoluisi.eti.br
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: ${{values.component_id}}
+        port:
+          number: 8080
