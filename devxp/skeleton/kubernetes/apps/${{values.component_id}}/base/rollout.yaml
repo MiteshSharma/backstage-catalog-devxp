@@ -50,7 +50,7 @@ spec:
         - templateName: istio-success-rate
         args:             # arguments allow AnalysisTemplates to be re-used
         - name: service
-          value: ${{values.component_id}}-canary-svc
+          value: ${{values.component_id}}-canary-svc.${{values.component_id}}.svc.cluster.local
         - name: namespace
           valueFrom:
             fieldRef:
