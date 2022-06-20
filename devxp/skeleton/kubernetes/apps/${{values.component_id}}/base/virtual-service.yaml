@@ -9,13 +9,12 @@ spec:
   - istio-system/istio-gateway
   hosts:
   - ${{values.component_id}}.diegoluisi.eti.br
-  - ${{values.component_id}}.local
   http:
   - name: primary
     route:
     - destination:
-        host: ${{values.component_id}}-stable
+        host: ${{values.component_id}}-stable-svc
       weight: 100
     - destination:
-        host: ${{values.component_id}}-canary
+        host: ${{values.component_id}}-canary-svc
       weight: 0
