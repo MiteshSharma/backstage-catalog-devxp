@@ -7,6 +7,7 @@ metadata:
     app: ${{values.component_id}}
     backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - resource:
@@ -15,7 +16,6 @@ spec:
         averageUtilization: 75
         type: Utilization
     type: Resource
-  minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

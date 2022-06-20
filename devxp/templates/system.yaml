@@ -54,7 +54,7 @@ spec:
             - production
 
 
-   
+
   steps:
     - id: fetch-template
       name: Fetch RDS Templates

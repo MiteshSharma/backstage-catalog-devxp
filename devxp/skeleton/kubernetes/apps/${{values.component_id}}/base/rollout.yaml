@@ -1,22 +1,23 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: ${{values.component_id}}
 spec:
-  replicas: 3
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: ${{values.component_id}}
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
       labels:
         app: ${{values.component_id}}
     spec:
       containers:
       - name: ${{values.component_id}}
         image: diegoluisi/${{values.component_id}}:latest
-        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 8080
@@ -27,13 +28,42 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: canary-demo-preview
+      canaryService: ${{values.component_id}}-canary
+      stableService: ${{values.component_id}}-stable
+      # analysis will be performed in background, while rollout is progressing through its steps
+      analysis:
+        startingStep: 1   # index of step list, of when to start this analysis
+        templates:
+        - templateName: istio-success-rate
+        args:             # arguments allow AnalysisTemplates to be re-used
+        - name: service
+          value: canary
+        - name: namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+      trafficRouting:
+        istio:
+          virtualService:
+            name: ${{values.component_id}}-vsvc
+            routes:
+            - primary
       steps:
+      - setWeight: 10
+      - pause: {duration: 20s} #{} pause indefinitely
       - setWeight: 20
-      - pause: {}
+      - pause: {duration: 20s}
+      - setWeight: 30
+      - pause: {duration: 20s}
       - setWeight: 40
-      - pause: {duration: 10}
+      - pause: {duration: 20s}
+      - setWeight: 50
+      - pause: {duration: 20s}
       - setWeight: 60
-      - pause: {duration: 10}
+      - pause: {duration: 20s}
+      - setWeight: 70
+      - pause: {duration: 20s}
       - setWeight: 80
-      - pause: {duration: 10}
+      - pause: {duration: 20s}
+      - setWeight: 90
+      - pause: {duration: 20s}
