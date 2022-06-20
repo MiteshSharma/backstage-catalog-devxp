@@ -7,8 +7,12 @@ metadata:
     app: ${{values.component_id}}
     backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
-  minReplicas: 1
-  maxReplicas: 2
+  maxReplicas: 5
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: ${{values.component_id}}
   metrics:
   - resource:
       name: cpu
@@ -16,7 +20,3 @@ spec:
         averageUtilization: 75
         type: Utilization
     type: Resource
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: ${{values.component_id}}
