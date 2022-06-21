@@ -2,18 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: chupa
+  name: ${{values.component_id}}
   labels:
-    app: chupa
+    app: ${{values.component_id}}
 spec:
   strategy:
     canary:
-      canaryService: chupa-canary
-      stableService: chupa-stable
+      canaryService: ${{values.component_id}}-canary
+      stableService: ${{values.component_id}}-stable
       trafficRouting:
         istio:
            virtualService:
-            name: chupa-vsvc
+            name: ${{values.component_id}}-vsvc
             routes:
             - primary
       steps:
@@ -29,17 +29,17 @@ spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: chupa
+      app: ${{values.component_id}}
       version: 0.0.2
   template:
     metadata:
       labels:
-        app: chupa
+        app: ${{values.component_id}}
         version: 0.0.2
     spec:
       containers:
-      - name: chupa
-        image: diegoluisi/chupa:0.0.2
+      - name: ${{values.component_id}}
+        image: diegoluisi/${{values.component_id}}:0.0.2
         imagePullPolicy: Always
         ports:
         - name: http
