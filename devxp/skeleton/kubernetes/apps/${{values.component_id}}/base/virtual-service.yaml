@@ -13,8 +13,8 @@ spec:
   - name: primary
     route:
     - destination:
-        host: ${{values.component_id}}-stable-svc
+        host: ${{values.component_id}}-stable
       weight: 100
     - destination:
-        host: ${{values.component_id}}-canary-svc
+        host: ${{values.component_id}}-canary
       weight: 0
