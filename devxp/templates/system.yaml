@@ -74,7 +74,7 @@ spec:
         targetPath: ./system
         url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/system
         values:
-          system_id: ${{ parameters.system }}
+          system: ${{ parameters.system }}
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
           domain: ${{ parameters.domain }}
