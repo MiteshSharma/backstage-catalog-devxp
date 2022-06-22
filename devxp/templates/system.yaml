@@ -13,12 +13,13 @@ spec:
   parameters:
     - title: Provide System simple information
       required:
-        - system_id
+        - system
         - description
         - owner
+        - domain
         - lifecycle
       properties:
-        system_id:
+        system:
           title: Name
           type: string
           description: Unique name of the System
@@ -38,6 +39,16 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+
+        domain:
+          title: Domain
+          type: string
+          description: Domain of the System
+          ui:field: DomainPicker
+          ui:options:
+            allowedKinds:
+              - Domain
+
         lifecycle:
           title: Lifecycle
           description: 'Application lifecycle'
@@ -52,30 +63,32 @@ spec:
 
   steps:
     - id: fetch-template
-      name: Fetch RDS Templates
+      name: Fetch System Templates
       action: fetch:template
       if: ${{ parameters.dryRun == false }}
       input:
-        targetPath: ./s3
-        url: https://github.com/diegoluisi/backstage-catalog/tree/main/devxp/skeleton/crossplane/s3
+        targetPath: ./system
+        url: https://github.com/devxp-tech/backstage-catalog/tree/main/devxp/skeleton/system
         values:
-          system: ${{ parameters.system }}
+          system_id: ${{ parameters.system }}
+          description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
-          env: ${{ parameters.env }}
+          domain: ${{ parameters.domain }}
+          lifecycle: ${{ parameters.lifecycle }}
 
     - id: open-pr
-      name: "Open PR in GitOps Repository"
+      name: "Open PR on Backstage Catalog"
       action: publish:github:pull-request
       if: ${{ parameters.dryRun == false }}
       input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
-        branchName: create-${{ parameters.system }}-${{ parameters.env }}-s3
-        title: ':robot: [backstage-bot] Create ${{ parameters.system }}-${{ parameters.env }}-s3'
+        repoUrl: github.com?repo=backstage-catalog&owner=devxp-tech
+        branchName: create-${{ parameters.system }}
+        title: ':robot: [backstage-bot] Create ${{ parameters.system }}'
         description: |
           # New project: ${{ parameters.system }}
           ${{ parameters.description if parameters.description }}
-        sourcePath: s3
-        targetPath: apps
+        sourcePath: system
+        targetPath: devxp/systems
 
     # - id: register
     #   name: Register Application in Catalog
