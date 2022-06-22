@@ -17,24 +17,17 @@ spec:
         - lifecycle
         - owner
       properties:
-        system:
-          title: System
+        system_id:
+          title: Name
           type: string
-          description: System of the component
-          ui:field: EntityPicker
-          ui:options:
-            allowedKinds:
-              - System
-            defaultKind: System
-        # component:
-        #   title: Component
-        #   type: string
-        #   description: Component to create resource
-        #   ui:field: EntityPicker
-        #   ui:options:
-        #     allowedKinds:
-        #       - Component
-        #     defaultKind: Component
+          description: Unique name of the System
+          ui:field: EntityNamePicker
+          ui:autofocus: true
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+
         owner:
           title: Owner
           type: string
