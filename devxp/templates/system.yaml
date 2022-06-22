@@ -13,9 +13,10 @@ spec:
   parameters:
     - title: Provide some simple information
       required:
-        - system
-        - lifecycle
+        - system_id
+        - description
         - owner
+        - lifecycle
       properties:
         system_id:
           title: Name
@@ -23,6 +24,7 @@ spec:
           description: Unique name of the System
           ui:field: EntityNamePicker
           ui:autofocus: true
+
         description:
           title: Description
           type: string
