@@ -44,10 +44,11 @@ spec:
           title: Domain
           type: string
           description: Domain of the System
-          ui:field: DomainPicker
+          ui:field: EntityPicker
           ui:options:
             allowedKinds:
               - Domain
+            defaultKind: Domain
 
         lifecycle:
           title: Lifecycle
