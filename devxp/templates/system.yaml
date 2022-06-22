@@ -60,7 +60,10 @@ spec:
             - experimental
             - production
 
-
+        dryRun:
+          title: Only perform a dry run, don't publish anything
+          type: boolean
+          default: false
 
   steps:
     - id: fetch-template
