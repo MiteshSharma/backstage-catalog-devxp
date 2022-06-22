@@ -11,7 +11,7 @@ spec:
   type: system
 
   parameters:
-    - title: Provide some simple information
+    - title: Provide System simple information
       required:
         - system_id
         - description
