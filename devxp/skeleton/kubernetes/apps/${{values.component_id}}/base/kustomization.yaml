@@ -1,11 +1,11 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: ${{values.system}}
+namespace: ${{ parameters.component_id }}
 resources:
   - ns.yaml
   - quota.yaml
-  - ${{values.system}}-deploy.yaml
-  - ${{values.system}}-svc.yaml
-  - ${{values.system}}-vs.yaml
-  - ${{values.system}}-hpa.yaml
+  - ${{ parameters.component_id }}-deploy.yaml
+  - ${{ parameters.component_id }}-svc.yaml
+  - ${{ parameters.component_id }}-vs.yaml
+  - ${{ parameters.component_id }}-hpa.yaml

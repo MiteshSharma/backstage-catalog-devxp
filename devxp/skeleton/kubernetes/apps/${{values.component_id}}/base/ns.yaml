@@ -3,10 +3,10 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    kubernetes.io/metadata.name: diego
-    backstage.io/kubernetes-id: diego
-    # istio-injection: enabled
-  name: diego
+    kubernetes.io/metadata.name: ${{values.system}}
+    backstage.io/kubernetes-id: ${{values.system}}
+    istio-injection: enabled
+  name: ${{values.system}}
 spec:
   finalizers:
   - kubernetes
