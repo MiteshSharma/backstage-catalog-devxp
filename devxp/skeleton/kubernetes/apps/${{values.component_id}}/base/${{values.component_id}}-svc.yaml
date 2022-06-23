@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${{values.component_id}}-svc
+  namespace: ${{values.component_id}}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: ${{values.component_id}}.diegoluisi.eti.br
+  labels:
+    app: ${{values.component_id}}
+    backstage.io/kubernetes-id: ${{values.component_id}}
+spec:
+  type: ClusterIP
+  ports:
+  - name: tcp-node
+    port: 8080
+  selector:
+    app: ${{values.component_id}}
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: ${{values.component_id}}-canary
+#   namespace: ${{values.component_id}}
+#   annotations:
+#     external-dns.alpha.kubernetes.io/hostname: ${{values.component_id}}.${{values.component_id}}luisi.eti.br
+#   labels:
+#     app: ${{values.component_id}}
+#     backstage.io/kubernetes-id: ${{values.component_id}}
+# spec:
+#   type: ClusterIP
+#   ports:
+#   - name: tcp-node
+#     port: 8080
+#   selector:
+#     app: ${{values.component_id}}

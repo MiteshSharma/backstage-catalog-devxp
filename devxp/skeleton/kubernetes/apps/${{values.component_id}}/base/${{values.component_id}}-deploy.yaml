@@ -1,29 +1,29 @@
 ---
-# create deployment for ${{values.system}}
+# create deployment for ${{values.component_id}}
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: ${{values.system}}
-  namespace: ${{values.system}}
+  name: ${{values.component_id}}
+  namespace: ${{values.component_id}}
   labels:
-    app: ${{values.system}}
+    app: ${{values.component_id}}
     version: 0.0.1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${{values.system}}
+      app: ${{values.component_id}}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ${{values.system}}
+        app: ${{values.component_id}}
         version: 0.0.1
     spec:
       containers:
-      - name: ${{values.system}}
-        image: diegoluisi/${{values.system}}:latest
+      - name: ${{values.component_id}}
+        image: diegoluisi/${{values.component_id}}:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
