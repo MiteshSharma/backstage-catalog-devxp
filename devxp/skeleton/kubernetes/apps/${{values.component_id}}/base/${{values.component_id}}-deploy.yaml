@@ -8,6 +8,7 @@ metadata:
   labels:
     app: ${{values.component_id}}
     version: 0.0.1
+    backstage.io/kubernetes-id: ${{values.component_id}}
 spec:
   replicas: 1
   selector:
@@ -20,6 +21,7 @@ spec:
       labels:
         app: ${{values.component_id}}
         version: 0.0.1
+        backstage.io/kubernetes-id: ${{values.component_id}}
     spec:
       containers:
       - name: ${{values.component_id}}
