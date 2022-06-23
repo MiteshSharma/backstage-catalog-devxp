@@ -1,8 +1,8 @@
 kind: ResourceQuota
 apiVersion: v1
 metadata:
-  name: ${{ parameters.component_id }}-quota
-  namespace: ${{ parameters.component_id }}
+  name: ${{values.component_id}}-quota
+  namespace: ${{values.component_id}}
 spec:
   hard:
     limits.cpu: 100m
