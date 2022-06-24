@@ -134,9 +134,9 @@ spec:
         defaultBranch: main
         repoVisibility: public
         collaborators:
-          - username: sre-team
+          - team: sre-team
             access: maintain
-          - username: ${{ parameters.owner }}
+          - team: ${{ parameters.owner }}
             access: push
 
     - id: fetch-kube
