@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: ${{values.component_id}}
 resources:
   - ns.yaml
-  # - quota.yaml //TODO need to fix
+  # - quota.yaml
   - ${{values.component_id}}-deploy.yaml
   - ${{values.component_id}}-svc.yaml
   - ${{values.component_id}}-vs.yaml
