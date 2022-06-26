@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: lab
+  description: Backstage
+  tags:
+    - lab
+    - frontend
+  links:
+    - url: https://lab.diegoluisi.eti.br
+      title: System
+      icon: dashboard
+  annotations:
+    github.com/project-slug: devxp-tech/lab
+    backstage.io/kubernetes-namespace: lab
+spec:
+  type: system
+  owner: group:engineering
+  domain: frontend
