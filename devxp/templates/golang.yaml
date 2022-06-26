@@ -86,7 +86,7 @@ spec:
       properties:
         kube:
           title: Create Kubernetes App
-          description: Checking this will also create a ArgoCD App
+          description: Checking this will also create Kubernetes App
           type: boolean
           default: false
         env:
@@ -157,7 +157,7 @@ spec:
       action: publish:github:pull-request
       if: ${{ parameters.kube == true }}
       input:
-        repoUrl: github.com?repo=argo&owner=diegoluisi
+        repoUrl: github.com?repo=gitops&owner=devxp-tech
         branchName: create-${{ parameters.component_id }}
         title: ':robot: [backstage-bot] Create new App ${{ parameters.component_id }}'
         description: |
